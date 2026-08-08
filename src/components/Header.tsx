@@ -24,15 +24,13 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Brand & Dynamic Title */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
           <div className="flex items-center gap-3 cursor-default group">
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-black text-white p-[1px] shadow-md group-hover:scale-105 transition-all duration-300">
-              <div className="w-full h-full bg-[#1D1D1F] rounded-[14px] flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300" />
-              </div>
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-[14px] overflow-hidden shadow-md group-hover:scale-105 transition-all duration-300 border border-black/10">
+              <img src="/logo.jpg" alt="Stash.af Vault Logo" className="w-full h-full object-cover" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl font-extrabold tracking-tight text-[#1D1D1F] font-sans">
-                  STASH
+                  STASH.AF
                 </h1>
                 <span className="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 border border-white/50 text-slate-700 shadow-sm">
                   Apple Light
