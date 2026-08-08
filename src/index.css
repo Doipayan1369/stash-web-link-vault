@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-border-hover: rgba(0, 0, 0, 0.16);
+    --glass-bg: rgba(255, 255, 255, 0.85);
+  }
+
+  body {
+    background-color: #F5F5F7;
+    background-image: 
+      radial-gradient(circle at top left, rgba(0, 113, 227, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(134, 134, 139, 0.03) 0%, transparent 60%);
+    background-attachment: fixed;
+    color: #1D1D1F;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Apple Light Frosted Glass Panels */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.glass-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow, background;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.08),
+              0 0 2px 0 rgba(0, 0, 0, 0.05),
+              inset 0 1px 0 0 rgba(255, 255, 255, 1);
+}
+
+.glass-card:active {
+  transform: translateY(-1px) scale(0.988);
+  transition-duration: 0.08s;
+}
+
+/* Premium Apple Light Button Interactions */
+.btn-stealth {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #1D1D1F;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, background, border-color;
+}
+
+.btn-stealth:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.16);
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.btn-stealth:active {
+  transform: scale(0.96);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Primary Action Button (Apple Obsidian Dark Pill) */
+.btn-primary {
+  background: linear-gradient(180deg, #2D2D2F 0%, #1D1D1F 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, #3D3D40 0%, #2D2D2F 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  background: #1D1D1F;
+}
+
+/* Secondary Blue Action Button (Apple System Blue) */
+.btn-blue {
+  background: linear-gradient(180deg, #1480F2 0%, #0071E3 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  border: 1px solid #0060C0;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-blue:hover {
+  background: linear-gradient(180deg, #2990FF 0%, #0077ED 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-blue:active {
+  transform: scale(0.96);
+}
+
+/* Active Filter Pill */
+.pill-active-apple {
+  background: #1D1D1F;
+  color: #FFFFFF;
+  border-color: #1D1D1F;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Custom Minimal Light Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(251, 251, 253, 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}

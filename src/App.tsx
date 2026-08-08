@@ -1,0 +1,286 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { Header } from './components/Header';
+import { StatsBanner } from './components/StatsBanner';
+import { BookmarkCard } from './components/BookmarkCard';
+import { AddBookmarkModal } from './components/AddBookmarkModal';
+import { ExportConfirmModal } from './components/ExportConfirmModal';
+import { CardDetailModal } from './components/CardDetailModal';
+import { INITIAL_BOOKMARKS } from './data/initialBookmarks';
+import { Bookmark, FilterState, ViewMode } from './types';
+import { Plus, Layers, CheckCircle2 } from 'lucide-react';
+
+const STORAGE_KEY = 'STASH_AF_BOOKMARKS_V1';
+
+export const App: React.FC = () => {
+  // Load bookmarks from LocalStorage or seed data
+  const [bookmarks, setBookmarks] = useState<Bookmark[]>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {
+      // Fallback
+    }
+    return INITIAL_BOOKMARKS;
+  });
+
+  // Save to LocalStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+    } catch (err) {
+      console.error('Failed to save to local storage', err);
+    }
+  }, [bookmarks]);
+
+  // View & Modal States
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+  const [selectedBookmarkForDetail, setSelectedBookmarkForDetail] = useState<Bookmark | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Filters State
+  const [filter, setFilter] = useState<FilterState>({
+    search: '',
+    source: 'all',
+    category: 'All',
+    tag: null,
+    favoritesOnly: false,
+    sortBy: 'newest',
+  });
+
+  const handleFilterChange = (updated: Partial<FilterState>) => {
+    setFilter((prev) => ({ ...prev, ...updated }));
+  };
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 2200);
+  };
+
+  const handleAddBookmark = (newBookmarkData: Omit<Bookmark, 'id' | 'createdAt'>) => {
+    const newEntry: Bookmark = {
+      ...newBookmarkData,
+      id: `stash-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+      createdAt: Date.now(),
+    };
+    setBookmarks((prev) => [newEntry, ...prev]);
+    showToast(`Added "${newEntry.title}" to stash!`);
+  };
+
+  const handleToggleFavorite = (id: string) => {
+    setBookmarks((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, isFavorite: !b.isFavorite } : b))
+    );
+    // Also update detail modal state if currently viewing this bookmark
+    if (selectedBookmarkForDetail && selectedBookmarkForDetail.id === id) {
+      setSelectedBookmarkForDetail((prev) => prev ? { ...prev, isFavorite: !prev.isFavorite } : null);
+    }
+  };
+
+  const handleDeleteBookmark = (id: string) => {
+    const target = bookmarks.find((b) => b.id === id);
+    if (confirm(`Remove "${target?.title || 'this entry'}" from your stash?`)) {
+      setBookmarks((prev) => prev.filter((b) => b.id !== id));
+      if (selectedBookmarkForDetail?.id === id) {
+        setSelectedBookmarkForDetail(null);
+      }
+      showToast('Entry removed from stash');
+    }
+  };
+
+  const handleCopyUrl = (url: string) => {
+    navigator.clipboard.writeText(url);
+    showToast('Destination URL copied to clipboard!');
+  };
+
+  // Trigger Export After Confirmation
+  const executeExportData = () => {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(bookmarks, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute('href', dataStr);
+    downloadAnchor.setAttribute('download', `stash_af_backup_${new Date().toISOString().slice(0, 10)}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+    showToast(`Exported ${bookmarks.length} website entries!`);
+  };
+
+  const handleImportData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fileReader = new FileReader();
+    if (e.target.files && e.target.files[0]) {
+      fileReader.readAsText(e.target.files[0], 'UTF-8');
+      fileReader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target?.result as string);
+          if (Array.isArray(imported)) {
+            setBookmarks(imported);
+            showToast(`Imported ${imported.length} bookmarks successfully!`);
+          } else {
+            alert('Invalid JSON file format');
+          }
+        } catch {
+          alert('Failed to parse JSON file');
+        }
+      };
+    }
+  };
+
+  const filteredBookmarks = useMemo(() => {
+    return bookmarks
+      .filter((item) => {
+        if (filter.search) {
+          const query = filter.search.toLowerCase();
+          const matchTitle = item.title.toLowerCase().includes(query);
+          const matchDesc = item.description.toLowerCase().includes(query);
+          const matchUrl = item.url.toLowerCase().includes(query);
+          const matchNotes = item.notes?.toLowerCase().includes(query) ?? false;
+          const matchCreator = item.creatorName?.toLowerCase().includes(query) ?? false;
+          const matchTags = item.tags.some((t) => t.toLowerCase().includes(query));
+          if (!matchTitle && !matchDesc && !matchUrl && !matchNotes && !matchCreator && !matchTags) return false;
+        }
+
+        if (filter.source !== 'all' && item.sourceType !== filter.source) {
+          return false;
+        }
+
+        if (filter.category !== 'All' && item.category !== filter.category) {
+          return false;
+        }
+
+        if (filter.tag && !item.tags.includes(filter.tag)) {
+          return false;
+        }
+
+        if (filter.favoritesOnly && !item.isFavorite) {
+          return false;
+        }
+
+        return true;
+      })
+      .sort((a, b) => {
+        if (filter.sortBy === 'newest') {
+          return b.createdAt - a.createdAt;
+        }
+        if (filter.sortBy === 'rating') {
+          return b.rating - a.rating;
+        }
+        if (filter.sortBy === 'favorites') {
+          return (b.isFavorite ? 1 : 0) - (a.isFavorite ? 1 : 0);
+        }
+        if (filter.sortBy === 'alphabetical') {
+          return a.title.localeCompare(b.title);
+        }
+        return 0;
+      });
+  }, [bookmarks, filter]);
+
+  return (
+    <div className="relative min-h-screen pb-20 bg-[#FBFBFD]">
+      
+      {/* Main Header Nav */}
+      <Header
+        bookmarks={bookmarks}
+        onOpenAddModal={() => setIsAddModalOpen(true)}
+        onRequestExport={() => setIsExportModalOpen(true)}
+        onImportData={handleImportData}
+      />
+
+      {/* Main Container */}
+      <main className="relative z-10 max-w-7xl mx-auto px-4 pt-6">
+        
+        {/* Controls & Filter Banner */}
+        <StatsBanner
+          filter={filter}
+          onFilterChange={handleFilterChange}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          totalCount={bookmarks.length}
+          filteredCount={filteredBookmarks.length}
+        />
+
+        {/* Bookmark Grid Layout */}
+        {filteredBookmarks.length > 0 ? (
+          <div
+            className={
+              viewMode === 'compact'
+                ? 'space-y-2.5'
+                : viewMode === 'bento'
+                ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]'
+                : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'
+            }
+          >
+            {filteredBookmarks.map((bookmark) => (
+              <BookmarkCard
+                key={bookmark.id}
+                bookmark={bookmark}
+                onSelect={(selected) => setSelectedBookmarkForDetail(selected)}
+                onToggleFavorite={handleToggleFavorite}
+                onDelete={handleDeleteBookmark}
+                onCopyUrl={handleCopyUrl}
+                viewMode={viewMode}
+              />
+            ))}
+          </div>
+        ) : (
+          /* Empty State */
+          <div className="glass-panel rounded-[32px] p-10 text-center max-w-md mx-auto my-12 space-y-4 border border-black/10">
+            <div className="w-14 h-14 rounded-3xl bg-slate-100 border border-black/10 flex items-center justify-center text-slate-700 mx-auto">
+              <Layers className="w-7 h-7" />
+            </div>
+            <h3 className="text-lg font-bold text-[#1D1D1F]">No entries found</h3>
+            <p className="text-xs text-slate-500">
+              {filter.search
+                ? `No entry matches "${filter.search}". Try clearing search.`
+                : 'Your stash is empty for this filter. Add your first website link!'}
+            </p>
+            <button
+              onClick={() => setIsAddModalOpen(true)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl btn-primary text-xs shadow-md transition-all"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Add Entry Now</span>
+            </button>
+          </div>
+        )}
+      </main>
+
+      {/* Add Bookmark Modal */}
+      <AddBookmarkModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onAddBookmark={handleAddBookmark}
+      />
+
+      {/* Export Confirmation Modal */}
+      <ExportConfirmModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        onConfirm={executeExportData}
+        count={bookmarks.length}
+      />
+
+      {/* Card Detail Pop-up Modal */}
+      <CardDetailModal
+        bookmark={selectedBookmarkForDetail}
+        isOpen={!!selectedBookmarkForDetail}
+        onClose={() => setSelectedBookmarkForDetail(null)}
+        onToggleFavorite={handleToggleFavorite}
+        onCopyUrl={handleCopyUrl}
+      />
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#1D1D1F] text-white text-xs font-semibold shadow-2xl backdrop-blur-xl animate-fade-in border border-black/20">
+          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
+    </div>
+  );
+};
