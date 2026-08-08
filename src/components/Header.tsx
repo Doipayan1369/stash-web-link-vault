@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Download, Upload, Sparkles, Star } from 'lucide-react';
+import logo from '../assets/logo.jpg';
 import { Bookmark } from '../types';
 
 interface HeaderProps {
@@ -25,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
           <div className="flex items-center gap-3 cursor-default group">
             <div className="relative flex items-center justify-center w-11 h-11 rounded-[14px] overflow-hidden shadow-md group-hover:scale-105 transition-all duration-300 border border-black/10">
-              <img src="/logo.jpg" alt="Stash.af Vault Logo" className="w-full h-full object-cover" />
+              <img src={logo} alt="Stash.af Vault Logo" className="w-full h-full object-cover" />
             </div>
             <div>
               <div className="flex items-center gap-2">
