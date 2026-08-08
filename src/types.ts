@@ -31,3 +31,8 @@ export interface FilterState {
   favoritesOnly: boolean;
   sortBy: SortOption;
 }
+
+declare module '*.jpg' {
+  const value: string;
+  export default value;
+}
