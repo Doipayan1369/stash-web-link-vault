@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
           <div className="flex items-center gap-4 cursor-default group">
             <div className="relative flex items-center justify-center w-14 h-14 bg-[#FEFFFC]/10/5 border border-white/10/10 shadow-xl overflow-hidden transition-all duration-75 group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] group-hover:shadow-xl">
-              <img src={logo} alt="Stash.af Vault Logo" className="w-full h-full object-cover grayscale opacity-90 mix-blend-luminosity hover:grayscale-0 hover:opacity-100 hover:mix-blend-normal transition-all duration-300" />
+              <img src={logo} alt="Stash.af Vault Logo" fetchPriority="high" className="w-full h-full object-cover grayscale opacity-90 mix-blend-luminosity hover:grayscale-0 hover:opacity-100 hover:mix-blend-normal transition-all duration-300" />
             </div>
             <div className="flex flex-col justify-center">
               <div className="flex items-center gap-2">

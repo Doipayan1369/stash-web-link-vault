@@ -61,17 +61,19 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
         
         {/* Search Input */}
         <div className="relative w-full md:w-[400px]">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FEFFFC] font-bold" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FEFFFC] font-bold" />
           <input
             type="text"
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="SEARCH ENTRIES..."
-            className="w-full pl-12 pr-4 py-3.5 bg-[#FEFFFC]/10/40 backdrop-blur-md/95 backdrop-blur-md border border-white/10/10 focus:bg-[#8116E0] text-[#FEFFFC] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none  shadow-xl focus:shadow-xl"
+            aria-label="Search Entries"
+            className="w-full pl-12 pr-4 py-3.5 rounded-full bg-[#FEFFFC]/10/40 backdrop-blur-md/95 backdrop-blur-md border border-white/10/10 focus:bg-[#8116E0] text-[#FEFFFC] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none shadow-xl focus:shadow-xl"
           />
           {filter.search && (
             <button
               onClick={() => onFilterChange({ search: '' })}
+              aria-label="Clear Search"
               className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#FEFFFC]/10/5 text-[#FEFFFC] px-2 py-1 shadow-xl active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
               CLEAR
@@ -120,6 +122,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
                   : 'text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
               title="Grid View"
+              aria-label="Grid View"
             >
               <Grid className="w-4 h-4" />
             </button>
@@ -132,6 +135,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
                   : 'text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
               title="Bento View"
+              aria-label="Bento View"
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
@@ -144,6 +148,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
                   : 'text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
               title="Compact View"
+              aria-label="Compact View"
             >
               <List className="w-4 h-4" />
             </button>

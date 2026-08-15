@@ -84,7 +84,8 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
             {!imgError && bookmark.faviconUrl ? (
               <img
                 src={bookmark.faviconUrl}
-                alt=""
+                alt={`${bookmark.title} favicon`}
+                loading="lazy"
                 className="w-5 h-5 object-contain"
                 onError={() => setImgError(true)}
               />
@@ -106,6 +107,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
         <div className="flex items-center gap-1.5 shrink-0">
           <button
             onClick={handleFavoriteClick}
+            aria-label={bookmark.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
             className={`p-2 btn-brutal-stealth ${
               bookmark.isFavorite ? 'bg-[#FEFFFC]/10/5' : ''
             }`}
@@ -115,6 +117,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
 
           <button
             onClick={handleCopy}
+            aria-label="Copy URL"
             className="p-2 btn-brutal-stealth"
             title="Copy URL"
           >
@@ -149,7 +152,8 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
               {!imgError && bookmark.faviconUrl ? (
                 <img
                   src={bookmark.faviconUrl}
-                  alt=""
+                  alt={`${bookmark.title} favicon`}
+                  loading="lazy"
                   className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   onError={() => setImgError(true)}
                 />
@@ -170,6 +174,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
           <div className="flex items-center gap-1">
             <button
               onClick={handleFavoriteClick}
+              aria-label={bookmark.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
               className={`p-2 btn-brutal-stealth border ${
                 bookmark.isFavorite ? 'bg-[#FEFFFC]/10/5 border-white/10/10' : 'border-transparent'
               }`}
@@ -180,6 +185,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
             
             <button
               onClick={handleDeleteClick}
+              aria-label="Delete entry"
               className="p-2 btn-brutal-stealth border border-transparent text-[#FEFFFC] hover:text-[#FEFFFC] hover:bg-[#FEFFFC]/10/5 hover:border-white/10/10 opacity-0 group-hover:opacity-100 "
               title="Delete entry"
             >
@@ -231,6 +237,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
         <div className="flex items-center gap-1.5">
           <button
             onClick={handleCopy}
+            aria-label="Copy URL"
             className="p-1.5 btn-brutal-stealth border border-white/10/10 bg-[#FEFFFC]/10/5/40 backdrop-blur-md shadow-xl hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-xl"
             title="Copy URL"
           >
