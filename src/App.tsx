@@ -230,20 +230,20 @@ export const App: React.FC = () => {
         ) : (
           /* Empty State */
           <div className="brutal-panel p-16 text-center max-w-lg mx-auto my-20 space-y-6">
-            <div className="w-14 h-14 bg-[#111111] border-[3px] border-[#111111] flex items-center justify-center text-[#FEFFFC] mx-auto shadow-[4px_4px_0px_#8116E0]">
+            <div className="w-16 h-16 rounded-2xl bg-[#111111]/80 border border-white/10 flex items-center justify-center text-[#D0FF00] mx-auto shadow-[0_0_30px_rgba(208,255,0,0.2)]">
               <Layers className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold uppercase tracking-tight text-[#111111]">No entries found</h3>
-            <p className="text-sm text-[#111111]/70 font-mono">
+            <h3 className="text-xl font-bold uppercase tracking-tight text-[#FEFFFC]">No entries found</h3>
+            <p className="text-sm font-mono text-[#FEFFFC]/70 max-w-sm mx-auto">
               {filter.search
                 ? `No entry matches "${filter.search}". Try clearing search.`
                 : 'Your stash is empty for this filter. Add your first website link!'}
             </p>
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 btn-brutal-primary text-xs shadow-md mt-4"
+              className="btn-brutal-primary px-8 py-4 inline-flex items-center gap-2 group"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="w-5 h-5" />
               <span>Add Entry Now</span>
             </button>
           </div>

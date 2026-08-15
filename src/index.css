@@ -5,8 +5,8 @@
 @layer base {
   body {
     background-color: #000000;
-    /* Base64 Noise Texture for the gritty feel */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    /* Subtle noise texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
     background-attachment: fixed;
     color: #FEFFFC;
     font-family: 'JetBrains Mono', monospace;
@@ -16,136 +16,170 @@
   }
 }
 
-/* Wabi-Sabi Brutalist Panels */
+/* Premium 3D Panels (Glassmorphism) */
 .brutal-panel {
-  background: #FEFFFC;
-  border: 3px solid #111111;
-  box-shadow: 6px 6px 0px #8116E0, 0 0 25px rgba(129, 22, 224, 0.4);
-  border-radius: 0;
-  color: #111111;
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(254, 255, 252, 0.1);
+  border-top: 1px solid rgba(254, 255, 252, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(254, 255, 252, 0.1);
+  border-radius: 16px;
+  color: #FEFFFC;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .brutal-card {
   position: relative;
-  background: #FEFFFC;
-  border: 3px solid #111111;
-  box-shadow: 6px 6px 0px #8116E0, 0 0 25px rgba(129, 22, 224, 0.3);
-  border-radius: 0;
-  color: #111111;
-  transition: all 0.15s ease-out;
-  will-change: transform, box-shadow;
+  background: rgba(17, 17, 17, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(254, 255, 252, 0.08);
+  border-top: 1px solid rgba(254, 255, 252, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  color: #FEFFFC;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow, border-color;
+  overflow: hidden;
+}
+
+.brutal-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(208,255,0,0.5) 0%, rgba(129,22,224,0) 50%, rgba(129,22,224,0.5) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .brutal-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px #D0FF00, 0 0 30px rgba(208, 255, 0, 0.4);
-  border-color: #111111;
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(129, 22, 224, 0.15);
+  background: rgba(25, 25, 25, 0.7);
+  border-color: rgba(254, 255, 252, 0.2);
+}
+
+.brutal-card:hover::before {
+  opacity: 1;
 }
 
 .brutal-card:active {
-  transform: translate(2px, 2px);
-  box-shadow: 4px 4px 0px #D0FF00, 0 0 15px rgba(208, 255, 0, 0.4);
-  transition-duration: 0.05s;
+  transform: translateY(-2px) scale(0.99);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition-duration: 0.2s;
 }
 
-/* Brutalist Buttons */
+/* Fluid Buttons */
 .btn-brutal-stealth {
   background: transparent;
-  border: 2px solid transparent;
-  color: #111111;
+  border: 1px solid transparent;
+  color: #FEFFFC;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 0;
-  transition: all 0.1s ease;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-brutal-stealth:hover {
-  background: #D0FF00;
-  border: 2px solid #111111;
-  box-shadow: 3px 3px 0px #8116E0, 0 0 15px rgba(129, 22, 224, 0.5);
-  transform: translate(-1px, -1px);
+  background: rgba(254, 255, 252, 0.05);
+  border: 1px solid rgba(254, 255, 252, 0.1);
+  color: #D0FF00;
+  box-shadow: 0 4px 12px rgba(208, 255, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .btn-brutal-stealth:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #8116E0, 0 0 5px rgba(129, 22, 224, 0.5);
+  transform: translateY(0);
+  background: rgba(254, 255, 252, 0.1);
 }
 
-/* Primary Action Button (Solid Black Block) */
+/* Primary Action Button (Neon Yellow) */
 .btn-brutal-primary {
   background: #D0FF00;
-  color: #111111;
+  color: #000000;
   font-weight: 800;
   text-transform: uppercase;
-  border: 3px solid #111111;
-  border-radius: 0;
-  box-shadow: 4px 4px 0px #8116E0, 0 0 20px rgba(129, 22, 224, 0.5);
-  transition: all 0.15s ease;
+  border: 1px solid #D0FF00;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(208, 255, 0, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-brutal-primary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #D0FF00, 0 0 25px rgba(208, 255, 0, 0.5);
-  background: #8116E0;
-  color: #FEFFFC;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(208, 255, 0, 0.5), 0 0 20px rgba(208, 255, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+  background: #E5FF4D;
 }
 
 .btn-brutal-primary:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #D0FF00, 0 0 10px rgba(208, 255, 0, 0.5);
-  background: #8116E0;
-  color: #FEFFFC;
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(208, 255, 0, 0.4);
+  background: #BFE600;
 }
 
-/* Secondary Action Button (Outline) */
+/* Secondary Action Button (Outline Violet) */
 .btn-brutal-outline {
-  background: #FEFFFC;
-  color: #111111;
+  background: rgba(129, 22, 224, 0.1);
+  color: #FEFFFC;
   font-weight: 800;
   text-transform: uppercase;
-  border: 3px solid #111111;
-  border-radius: 0;
-  box-shadow: 4px 4px 0px #8116E0, 0 0 15px rgba(129, 22, 224, 0.3);
-  transition: all 0.15s ease;
+  border: 1px solid #8116E0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(129, 22, 224, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
 }
 
 .btn-brutal-outline:hover {
-  background: #D0FF00;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #8116E0, 0 0 25px rgba(129, 22, 224, 0.5);
+  background: #8116E0;
+  color: #FEFFFC;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(129, 22, 224, 0.4), 0 0 20px rgba(129, 22, 224, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  border-color: #9C42EF;
 }
 
 .btn-brutal-outline:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #8116E0, 0 0 10px rgba(129, 22, 224, 0.5);
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(129, 22, 224, 0.3);
+  background: #6A0FB5;
 }
 
 /* Active Filter Tag */
 .brutal-active {
-  background: #111111;
-  color: #D0FF00;
-  border-color: #111111;
-  box-shadow: 4px 4px 0px #8116E0, 0 0 15px rgba(129, 22, 224, 0.5);
+  background: #8116E0;
+  color: #FEFFFC;
+  border-color: #9C42EF;
+  box-shadow: 0 4px 15px rgba(129, 22, 224, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Hard Custom Scrollbar */
+/* Hard Custom Scrollbar -> Smooth Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-  background: #FEFFFC;
-  border-left: 2px solid #111111;
+  width: 10px;
+  height: 10px;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FEFFFC;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #111111;
-  border: 2px solid #FEFFFC;
+  background: rgba(254, 255, 252, 0.15);
+  border-radius: 5px;
+  border: 2px solid #050505;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8116E0;
+  background: rgba(254, 255, 252, 0.3);
 }

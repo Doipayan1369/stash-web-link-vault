@@ -61,18 +61,18 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
         
         {/* Search Input */}
         <div className="relative w-full md:w-[400px]">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111] font-bold" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FEFFFC] font-bold" />
           <input
             type="text"
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="SEARCH ENTRIES..."
-            className="w-full pl-12 pr-4 py-3.5 bg-[#FEFFFC] border-[3px] border-[#111111] focus:bg-[#8116E0] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none transition-none shadow-[4px_4px_0px_#8116E0] focus:shadow-[4px_4px_0px_#111111]"
+            className="w-full pl-12 pr-4 py-3.5 bg-[#111111]/60 backdrop-blur-md border border-white/10 focus:bg-[#8116E0] text-[#FEFFFC] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none  shadow-xl focus:shadow-xl"
           />
           {filter.search && (
             <button
               onClick={() => onFilterChange({ search: '' })}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#111111] text-[#FEFFFC] px-2 py-1 shadow-[2px_2px_0px_#8116E0] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#FEFFFC]/10 text-[#FEFFFC] px-2 py-1 shadow-xl active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
               CLEAR
             </button>
@@ -83,12 +83,12 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
         <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-between md:justify-end">
           
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-1.5 bg-[#FEFFFC] border-[3px] border-[#111111] px-3 py-2 text-xs font-bold uppercase text-[#111111] shadow-[4px_4px_0px_#8116E0]">
-            <ArrowUpDown className="w-3.5 h-3.5 text-[#111111]" />
+          <div className="flex items-center gap-1.5 bg-[#111111]/60 backdrop-blur-md border border-white/10 px-3 py-2 text-xs font-bold uppercase text-[#FEFFFC] shadow-xl">
+            <ArrowUpDown className="w-3.5 h-3.5 text-[#FEFFFC]" />
             <select
               value={filter.sortBy}
               onChange={(e) => onFilterChange({ sortBy: e.target.value as SortOption })}
-              className="bg-transparent text-[#111111] focus:outline-none cursor-pointer font-mono font-bold uppercase appearance-none"
+              className="bg-transparent text-[#FEFFFC] focus:outline-none cursor-pointer font-mono font-bold uppercase appearance-none"
             >
               <option value="newest">Newest First</option>
               <option value="rating">Highest Rating</option>
@@ -101,47 +101,47 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onFilterChange({ favoritesOnly: !filter.favoritesOnly })}
-              className={`flex items-center gap-1.5 px-3 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase transition-none shadow-[4px_4px_0px_#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#8116E0] ${
+              className={`flex items-center gap-1.5 px-3 py-2 border border-white/10 text-xs font-bold uppercase  shadow-xl active:translate-x-[2px] active:translate-y-[2px] active:shadow-xl ${
                 filter.favoritesOnly
-                  ? 'bg-[#111111] text-[#FEFFFC]'
-                  : 'bg-[#FEFFFC] text-[#111111] hover:bg-[#8116E0]'
+                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
+                  : 'bg-[#111111]/60 backdrop-blur-md text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
             >
-              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#111111]'}`} />
+              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#FEFFFC]'}`} />
               <span>Starred</span>
             </button>
 
-            <div className="flex items-center bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#8116E0]">
+            <div className="flex items-center bg-[#111111]/60 backdrop-blur-md border border-white/10 shadow-xl">
             <button
               onClick={() => onViewModeChange('grid')}
-              className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
+              className={`p-2 text-xs font-bold flex items-center justify-center  ${
                 viewMode === 'grid'
-                  ? 'bg-[#111111] text-[#FEFFFC]'
-                  : 'text-[#111111] hover:bg-[#8116E0]'
+                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
+                  : 'text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
               title="Grid View"
             >
               <Grid className="w-4 h-4" />
             </button>
-            <div className="w-[3px] self-stretch bg-[#111111]"></div>
+            <div className="w-[3px] self-stretch bg-[#FEFFFC]/10"></div>
             <button
               onClick={() => onViewModeChange('bento')}
-              className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
+              className={`p-2 text-xs font-bold flex items-center justify-center  ${
                 viewMode === 'bento'
-                  ? 'bg-[#111111] text-[#FEFFFC]'
-                  : 'text-[#111111] hover:bg-[#8116E0]'
+                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
+                  : 'text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
               title="Bento View"
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
-            <div className="w-[3px] self-stretch bg-[#111111]"></div>
+            <div className="w-[3px] self-stretch bg-[#FEFFFC]/10"></div>
             <button
               onClick={() => onViewModeChange('compact')}
-              className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
+              className={`p-2 text-xs font-bold flex items-center justify-center  ${
                 viewMode === 'compact'
-                  ? 'bg-[#111111] text-[#FEFFFC]'
-                  : 'text-[#111111] hover:bg-[#8116E0]'
+                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
+                  : 'text-[#FEFFFC] hover:bg-[#8116E0]'
               }`}
               title="Compact View"
             >
@@ -151,7 +151,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
           </div>
 
           {/* Stats Pill */}
-          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#FEFFFC] border-[3px] border-[#111111] text-xs font-black uppercase text-[#111111] shadow-[4px_4px_0px_#111111]">
+          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#111111]/60 backdrop-blur-md border border-white/10 text-xs font-black uppercase text-[#FEFFFC] shadow-xl">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{filteredCount} / {totalCount} SITES</span>
           </div>
@@ -166,10 +166,10 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
             <button
               key={type}
               onClick={() => onFilterChange({ source: type })}
-              className={`flex items-center gap-2 px-4 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase whitespace-nowrap transition-none ${
+              className={`flex items-center gap-2 px-4 py-2 border border-white/10 text-xs font-bold uppercase whitespace-nowrap  ${
                 isActive
                   ? 'brutal-active'
-                  : 'bg-[#FEFFFC] text-[#111111] shadow-[4px_4px_0px_#8116E0] hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#8116E0]'
+                  : 'bg-[#111111]/60 backdrop-blur-md text-[#FEFFFC] shadow-xl hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-xl'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -181,17 +181,17 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
 
       {/* Category Tabs */}
       <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-none">
-        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-3 shrink-0 bg-[#FEFFFC] px-3 py-1.5 border-[2px] border-[#111111]">CATEGORY</span>
+        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#FEFFFC] mr-3 shrink-0 bg-[#111111]/60 backdrop-blur-md px-3 py-1.5 border border-white/10">CATEGORY</span>
         {CATEGORIES.map((cat) => {
           const isActive = filter.category === cat;
           return (
             <button
               key={cat}
               onClick={() => onFilterChange({ category: cat })}
-              className={`px-3 py-1.5 border-[2px] border-[#111111] text-xs font-bold uppercase whitespace-nowrap transition-none ${
+              className={`px-3 py-1.5 border border-white/10 text-xs font-bold uppercase whitespace-nowrap  ${
                 isActive
-                  ? 'bg-[#111111] text-[#FEFFFC] shadow-[2px_2px_0px_#8116E0]'
-                  : 'bg-[#FEFFFC] text-[#111111] hover:bg-[#FEFFFC] hover:shadow-[2px_2px_0px_#111111]'
+                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC] shadow-xl'
+                  : 'bg-[#111111]/60 backdrop-blur-md text-[#FEFFFC] hover:bg-[#111111]/60 backdrop-blur-md hover:shadow-xl'
               }`}
             >
               {cat}
