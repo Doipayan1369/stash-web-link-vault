@@ -4,11 +4,11 @@
 
 @layer base {
   body {
-    background-color: #1B676B;
+    background-color: #000000;
     /* Base64 Noise Texture for the gritty feel */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     background-attachment: fixed;
-    color: #EAFDE6;
+    color: #FEFFFC;
     font-family: 'JetBrains Mono', monospace;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
@@ -18,18 +18,18 @@
 
 /* Wabi-Sabi Brutalist Panels */
 .brutal-panel {
-  background: #EAFDE6;
+  background: #FEFFFC;
   border: 3px solid #111111;
-  box-shadow: 6px 6px 0px #111111;
+  box-shadow: 6px 6px 0px #8116E0, 0 0 25px rgba(129, 22, 224, 0.4);
   border-radius: 0;
   color: #111111;
 }
 
 .brutal-card {
   position: relative;
-  background: #EAFDE6;
+  background: #FEFFFC;
   border: 3px solid #111111;
-  box-shadow: 6px 6px 0px #111111;
+  box-shadow: 6px 6px 0px #8116E0, 0 0 25px rgba(129, 22, 224, 0.3);
   border-radius: 0;
   color: #111111;
   transition: all 0.15s ease-out;
@@ -38,12 +38,13 @@
 
 .brutal-card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px #111111;
+  box-shadow: 8px 8px 0px #D0FF00, 0 0 30px rgba(208, 255, 0, 0.4);
+  border-color: #111111;
 }
 
 .brutal-card:active {
   transform: translate(2px, 2px);
-  box-shadow: 4px 4px 0px #111111;
+  box-shadow: 4px 4px 0px #D0FF00, 0 0 15px rgba(208, 255, 0, 0.4);
   transition-duration: 0.05s;
 }
 
@@ -60,89 +61,91 @@
 }
 
 .btn-brutal-stealth:hover {
-  background: #BEF202;
+  background: #D0FF00;
   border: 2px solid #111111;
-  box-shadow: 3px 3px 0px #111111;
+  box-shadow: 3px 3px 0px #8116E0, 0 0 15px rgba(129, 22, 224, 0.5);
   transform: translate(-1px, -1px);
 }
 
 .btn-brutal-stealth:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #111111;
+  box-shadow: 1px 1px 0px #8116E0, 0 0 5px rgba(129, 22, 224, 0.5);
 }
 
 /* Primary Action Button (Solid Black Block) */
 .btn-brutal-primary {
-  background: #BEF202;
+  background: #D0FF00;
   color: #111111;
   font-weight: 800;
   text-transform: uppercase;
   border: 3px solid #111111;
   border-radius: 0;
-  box-shadow: 4px 4px 0px #111111;
+  box-shadow: 4px 4px 0px #8116E0, 0 0 20px rgba(129, 22, 224, 0.5);
   transition: all 0.15s ease;
 }
 
 .btn-brutal-primary:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #519548;
-  background: #88C425;
+  box-shadow: 6px 6px 0px #D0FF00, 0 0 25px rgba(208, 255, 0, 0.5);
+  background: #8116E0;
+  color: #FEFFFC;
 }
 
 .btn-brutal-primary:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #519548;
-  background: #88C425;
+  box-shadow: 2px 2px 0px #D0FF00, 0 0 10px rgba(208, 255, 0, 0.5);
+  background: #8116E0;
+  color: #FEFFFC;
 }
 
 /* Secondary Action Button (Outline) */
 .btn-brutal-outline {
-  background: #EAFDE6;
+  background: #FEFFFC;
   color: #111111;
   font-weight: 800;
   text-transform: uppercase;
   border: 3px solid #111111;
   border-radius: 0;
-  box-shadow: 4px 4px 0px #111111;
+  box-shadow: 4px 4px 0px #8116E0, 0 0 15px rgba(129, 22, 224, 0.3);
   transition: all 0.15s ease;
 }
 
 .btn-brutal-outline:hover {
-  background: #BEF202;
+  background: #D0FF00;
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #111111;
+  box-shadow: 6px 6px 0px #8116E0, 0 0 25px rgba(129, 22, 224, 0.5);
 }
 
 .btn-brutal-outline:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #111111;
+  box-shadow: 2px 2px 0px #8116E0, 0 0 10px rgba(129, 22, 224, 0.5);
 }
 
 /* Active Filter Tag */
 .brutal-active {
   background: #111111;
-  color: #BEF202;
+  color: #D0FF00;
   border-color: #111111;
-  box-shadow: 4px 4px 0px #88C425;
+  box-shadow: 4px 4px 0px #8116E0, 0 0 15px rgba(129, 22, 224, 0.5);
 }
 
 /* Hard Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
-  background: #EAFDE6;
+  background: #FEFFFC;
   border-left: 2px solid #111111;
 }
 
 ::-webkit-scrollbar-track {
-  background: #EAFDE6;
+  background: #FEFFFC;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #111111;
-  border: 2px solid #EAFDE6;
+  border: 2px solid #FEFFFC;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #519548;
+  background: #8116E0;
 }

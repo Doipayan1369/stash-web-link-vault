@@ -67,12 +67,12 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="SEARCH ENTRIES..."
-            className="w-full pl-12 pr-4 py-3.5 bg-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#88C425] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] focus:shadow-[4px_4px_0px_#111111]"
+            className="w-full pl-12 pr-4 py-3.5 bg-[#FEFFFC] border-[3px] border-[#111111] focus:bg-[#8116E0] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none transition-none shadow-[4px_4px_0px_#8116E0] focus:shadow-[4px_4px_0px_#111111]"
           />
           {filter.search && (
             <button
               onClick={() => onFilterChange({ search: '' })}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#111111] text-[#FFFFFF] px-2 py-1 shadow-[2px_2px_0px_#88C425] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#111111] text-[#FEFFFC] px-2 py-1 shadow-[2px_2px_0px_#8116E0] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
               CLEAR
             </button>
@@ -83,7 +83,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
         <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-between md:justify-end">
           
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-1.5 bg-[#FFFFFF] border-[3px] border-[#111111] px-3 py-2 text-xs font-bold uppercase text-[#111111] shadow-[4px_4px_0px_#88C425]">
+          <div className="flex items-center gap-1.5 bg-[#FEFFFC] border-[3px] border-[#111111] px-3 py-2 text-xs font-bold uppercase text-[#111111] shadow-[4px_4px_0px_#8116E0]">
             <ArrowUpDown className="w-3.5 h-3.5 text-[#111111]" />
             <select
               value={filter.sortBy}
@@ -101,23 +101,23 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onFilterChange({ favoritesOnly: !filter.favoritesOnly })}
-              className={`flex items-center gap-1.5 px-3 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase transition-none shadow-[4px_4px_0px_#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#88C425] ${
+              className={`flex items-center gap-1.5 px-3 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase transition-none shadow-[4px_4px_0px_#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#8116E0] ${
                 filter.favoritesOnly
-                  ? 'bg-[#111111] text-[#FFFFFF]'
-                  : 'bg-[#FFFFFF] text-[#111111] hover:bg-[#88C425]'
+                  ? 'bg-[#111111] text-[#FEFFFC]'
+                  : 'bg-[#FEFFFC] text-[#111111] hover:bg-[#8116E0]'
               }`}
             >
-              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FFFFFF] text-[#FFFFFF]' : 'text-[#111111]'}`} />
+              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#111111]'}`} />
               <span>Starred</span>
             </button>
 
-            <div className="flex items-center bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425]">
+            <div className="flex items-center bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#8116E0]">
             <button
               onClick={() => onViewModeChange('grid')}
               className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
                 viewMode === 'grid'
-                  ? 'bg-[#111111] text-[#FFFFFF]'
-                  : 'text-[#111111] hover:bg-[#88C425]'
+                  ? 'bg-[#111111] text-[#FEFFFC]'
+                  : 'text-[#111111] hover:bg-[#8116E0]'
               }`}
               title="Grid View"
             >
@@ -128,8 +128,8 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
               onClick={() => onViewModeChange('bento')}
               className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
                 viewMode === 'bento'
-                  ? 'bg-[#111111] text-[#FFFFFF]'
-                  : 'text-[#111111] hover:bg-[#88C425]'
+                  ? 'bg-[#111111] text-[#FEFFFC]'
+                  : 'text-[#111111] hover:bg-[#8116E0]'
               }`}
               title="Bento View"
             >
@@ -140,8 +140,8 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
               onClick={() => onViewModeChange('compact')}
               className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
                 viewMode === 'compact'
-                  ? 'bg-[#111111] text-[#FFFFFF]'
-                  : 'text-[#111111] hover:bg-[#88C425]'
+                  ? 'bg-[#111111] text-[#FEFFFC]'
+                  : 'text-[#111111] hover:bg-[#8116E0]'
               }`}
               title="Compact View"
             >
@@ -151,7 +151,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
           </div>
 
           {/* Stats Pill */}
-          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#FFFFFF] border-[3px] border-[#111111] text-xs font-black uppercase text-[#111111] shadow-[4px_4px_0px_#111111]">
+          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#FEFFFC] border-[3px] border-[#111111] text-xs font-black uppercase text-[#111111] shadow-[4px_4px_0px_#111111]">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{filteredCount} / {totalCount} SITES</span>
           </div>
@@ -169,7 +169,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
               className={`flex items-center gap-2 px-4 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase whitespace-nowrap transition-none ${
                 isActive
                   ? 'brutal-active'
-                  : 'bg-[#FFFFFF] text-[#111111] shadow-[4px_4px_0px_#88C425] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#88C425]'
+                  : 'bg-[#FEFFFC] text-[#111111] shadow-[4px_4px_0px_#8116E0] hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#8116E0]'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -181,7 +181,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
 
       {/* Category Tabs */}
       <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-none">
-        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-3 shrink-0 bg-[#FFFFFF] px-3 py-1.5 border-[2px] border-[#111111]">CATEGORY</span>
+        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-3 shrink-0 bg-[#FEFFFC] px-3 py-1.5 border-[2px] border-[#111111]">CATEGORY</span>
         {CATEGORIES.map((cat) => {
           const isActive = filter.category === cat;
           return (
@@ -190,8 +190,8 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
               onClick={() => onFilterChange({ category: cat })}
               className={`px-3 py-1.5 border-[2px] border-[#111111] text-xs font-bold uppercase whitespace-nowrap transition-none ${
                 isActive
-                  ? 'bg-[#111111] text-[#FFFFFF] shadow-[2px_2px_0px_#88C425]'
-                  : 'bg-[#EAFDE6] text-[#111111] hover:bg-[#FFFFFF] hover:shadow-[2px_2px_0px_#111111]'
+                  ? 'bg-[#111111] text-[#FEFFFC] shadow-[2px_2px_0px_#8116E0]'
+                  : 'bg-[#FEFFFC] text-[#111111] hover:bg-[#FEFFFC] hover:shadow-[2px_2px_0px_#111111]'
               }`}
             >
               {cat}

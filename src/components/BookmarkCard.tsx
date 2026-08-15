@@ -54,7 +54,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
   };
 
   const getSourceBadge = (source: SourceType) => {
-    const badgeStyle = "inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#FFFFFF] border-[2px] border-[#111111] text-[#111111] text-[10px] font-black uppercase tracking-tight";
+    const badgeStyle = "inline-flex items-center gap-1 px-1.5 py-0.5 bg-[#FEFFFC] border-[2px] border-[#111111] text-[#111111] text-[10px] font-black uppercase tracking-tight";
     switch (source) {
       case 'reddit':
         return <span className={badgeStyle}><MessageSquare className="w-2.5 h-2.5" /> Reddit</span>;
@@ -80,7 +80,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
         className="brutal-card p-4 sm:p-5 flex items-center justify-between gap-4 group cursor-pointer"
       >
         <div className="flex items-center gap-4 min-w-0">
-          <div className="w-10 h-10 bg-[#FFFFFF] border-[2px] border-[#111111] shadow-[2px_2px_0px_#111111] flex items-center justify-center shrink-0 p-1">
+          <div className="w-10 h-10 bg-[#FEFFFC] border-[2px] border-[#111111] shadow-[2px_2px_0px_#111111] flex items-center justify-center shrink-0 p-1">
             {!imgError && bookmark.faviconUrl ? (
               <img
                 src={bookmark.faviconUrl}
@@ -110,7 +110,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
               bookmark.isFavorite ? 'bg-[#111111]' : ''
             }`}
           >
-            <Star className={`w-4 h-4 ${bookmark.isFavorite ? 'fill-[#FFFFFF] text-[#FFFFFF]' : 'text-[#111111]'}`} />
+            <Star className={`w-4 h-4 ${bookmark.isFavorite ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#111111]'}`} />
           </button>
 
           <button
@@ -145,7 +145,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
         {/* Top Header */}
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-3.5 min-w-0">
-            <div className="w-12 h-12 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] flex items-center justify-center p-2 shrink-0">
+            <div className="w-12 h-12 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] flex items-center justify-center p-2 shrink-0">
               {!imgError && bookmark.faviconUrl ? (
                 <img
                   src={bookmark.faviconUrl}
@@ -175,12 +175,12 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
               }`}
               title={bookmark.isFavorite ? 'Starred' : 'Star Entry'}
             >
-              <Star className={`w-4 h-4 ${bookmark.isFavorite ? 'fill-[#FFFFFF] text-[#FFFFFF]' : 'text-[#111111]'}`} />
+              <Star className={`w-4 h-4 ${bookmark.isFavorite ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#111111]'}`} />
             </button>
             
             <button
               onClick={handleDeleteClick}
-              className="p-2 btn-brutal-stealth border-[2px] border-transparent text-[#111111] hover:text-[#FFFFFF] hover:bg-[#111111] hover:border-[#111111] opacity-0 group-hover:opacity-100 transition-none"
+              className="p-2 btn-brutal-stealth border-[2px] border-transparent text-[#111111] hover:text-[#FEFFFC] hover:bg-[#111111] hover:border-[#111111] opacity-0 group-hover:opacity-100 transition-none"
               title="Delete entry"
             >
               <Trash2 className="w-4 h-4" />
@@ -213,7 +213,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
           {bookmark.tags.slice(0, 3).map((tag, idx) => (
             <span
               key={idx}
-              className="px-2 py-0.5 bg-[#FFFFFF] border-[2px] border-[#111111] text-[10px] font-bold uppercase text-[#111111]"
+              className="px-2 py-0.5 bg-[#FEFFFC] border-[2px] border-[#111111] text-[10px] font-bold uppercase text-[#111111]"
             >
               #{tag}
             </span>
@@ -223,15 +223,15 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
 
       {/* Footer */}
       <div className="pt-4 border-t-[3px] border-[#111111] flex items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5 bg-[#111111] text-[#FFFFFF] px-3 py-1.5 shadow-[2px_2px_0px_#88C425]">
-          <Flame className="w-3 h-3 fill-[#FFFFFF] text-[#FFFFFF]" />
+        <div className="flex items-center gap-1.5 bg-[#111111] text-[#FEFFFC] px-3 py-1.5 shadow-[2px_2px_0px_#8116E0]">
+          <Flame className="w-3 h-3 fill-[#FEFFFC] text-[#FEFFFC]" />
           <span className="text-[10px] font-black uppercase">{bookmark.rating}.0</span>
         </div>
 
         <div className="flex items-center gap-1.5">
           <button
             onClick={handleCopy}
-            className="p-1.5 btn-brutal-stealth border-[2px] border-[#111111] bg-[#FFFFFF] shadow-[2px_2px_0px_#111111] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111111]"
+            className="p-1.5 btn-brutal-stealth border-[2px] border-[#111111] bg-[#FEFFFC] shadow-[2px_2px_0px_#111111] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#111111]"
             title="Copy URL"
           >
             {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}

@@ -69,14 +69,14 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none"
+          className="absolute top-5 right-5 p-2 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none"
         >
           <X className="w-5 h-5 text-[#111111]" />
         </button>
 
         {/* Card Header: Icon + Title + Source */}
         <div className="flex items-start gap-4 mb-6 pr-8">
-          <div className="w-16 h-16 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111] flex items-center justify-center p-2 shrink-0">
+          <div className="w-16 h-16 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111] flex items-center justify-center p-2 shrink-0">
             {!imgError && bookmark.faviconUrl ? (
               <img
                 src={bookmark.faviconUrl}
@@ -90,10 +90,10 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
           </div>
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[12px] font-black text-[#111111] uppercase tracking-[0.2em] bg-[#88C425] px-2 py-0.5 border-[2px] border-[#111111]">
+              <span className="text-[12px] font-black text-[#111111] uppercase tracking-[0.2em] bg-[#8116E0] px-2 py-0.5 border-[2px] border-[#111111]">
                 {bookmark.category}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#FFFFFF] border-[2px] border-[#111111] text-[11px] font-bold text-[#111111] uppercase">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#FEFFFC] border-[2px] border-[#111111] text-[11px] font-bold text-[#111111] uppercase">
                 {getSourceIcon(bookmark.sourceType)}
                 <span>{bookmark.sourceType.replace('_', ' ')}</span>
               </span>
@@ -107,9 +107,9 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
 
         {/* Creator Info Box (Who Created It / Source Post Link) */}
         {(bookmark.creatorName || bookmark.creatorLink) && (
-          <div className="mb-6 p-4 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425] flex items-center justify-between gap-3">
+          <div className="mb-6 p-4 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#8116E0] flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#111111] text-[#FFFFFF] border-[2px] border-[#111111] flex items-center justify-center shadow-[2px_2px_0px_#88C425]">
+              <div className="w-10 h-10 bg-[#111111] text-[#FEFFFC] border-[2px] border-[#111111] flex items-center justify-center shadow-[2px_2px_0px_#8116E0]">
                 <User className="w-5 h-5" />
               </div>
               <div>
@@ -127,7 +127,7 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
                 href={bookmark.creatorLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 bg-[#88C425] border-[2px] border-[#111111] text-[#111111] text-xs font-bold uppercase hover:bg-[#FFFFFF] shadow-[2px_2px_0px_#111111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#111111] transition-none"
+                className="flex items-center gap-1.5 px-3 py-2 bg-[#8116E0] border-[2px] border-[#111111] text-[#111111] text-xs font-bold uppercase hover:bg-[#FEFFFC] shadow-[2px_2px_0px_#111111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#111111] transition-none"
               >
                 <span>VIEW POST</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -137,8 +137,8 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
         )}
 
         {/* Description */}
-        <div className="mb-6 border-[3px] border-[#111111] p-4 bg-[#FFFFFF] shadow-[4px_4px_0px_#88C425]">
-          <h4 className="text-[11px] font-black text-[#111111] uppercase tracking-[0.2em] mb-2 bg-[#88C425] inline-block px-2 border-[2px] border-[#111111]">
+        <div className="mb-6 border-[3px] border-[#111111] p-4 bg-[#FEFFFC] shadow-[4px_4px_0px_#8116E0]">
+          <h4 className="text-[11px] font-black text-[#111111] uppercase tracking-[0.2em] mb-2 bg-[#8116E0] inline-block px-2 border-[2px] border-[#111111]">
             ABOUT THIS SITE
           </h4>
           <p className="text-[14px] text-[#111111] font-mono leading-relaxed font-medium">
@@ -148,9 +148,9 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
 
         {/* Custom Workflow Note */}
         {bookmark.notes && (
-          <div className="mb-6 p-4 bg-[#111111] border-[3px] border-[#111111] text-[#FFFFFF] shadow-[6px_6px_0px_#88C425]">
+          <div className="mb-6 p-4 bg-[#111111] border-[3px] border-[#111111] text-[#FEFFFC] shadow-[6px_6px_0px_#8116E0]">
             <div className="flex items-center gap-2 text-[12px] font-black uppercase tracking-widest mb-2">
-              <BookmarkIcon className="w-4 h-4 fill-[#FFFFFF]" />
+              <BookmarkIcon className="w-4 h-4 fill-[#FEFFFC]" />
               <span>WORKFLOW NOTE</span>
             </div>
             <p className="text-[14px] font-mono font-medium leading-relaxed">
@@ -165,15 +165,15 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
             {bookmark.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 bg-[#FFFFFF] border-[2px] border-[#111111] text-[11px] font-bold uppercase text-[#111111] shadow-[2px_2px_0px_#88C425]"
+                className="px-3 py-1 bg-[#FEFFFC] border-[2px] border-[#111111] text-[11px] font-bold uppercase text-[#111111] shadow-[2px_2px_0px_#8116E0]"
               >
                 #{tag}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#111111] text-[#FFFFFF] shadow-[4px_4px_0px_#88C425] shrink-0 border-[2px] border-[#111111]">
-            <Flame className="w-4 h-4 fill-[#FFFFFF]" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#111111] text-[#FEFFFC] shadow-[4px_4px_0px_#8116E0] shrink-0 border-[2px] border-[#111111]">
+            <Flame className="w-4 h-4 fill-[#FEFFFC]" />
             <span className="text-[14px] font-black uppercase">{bookmark.rating}.0</span>
           </div>
         </div>
@@ -184,16 +184,16 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
             <button
               onClick={() => onToggleFavorite(bookmark.id)}
               className={`p-3 btn-brutal-stealth border-[3px] shadow-[4px_4px_0px_#111111] ${
-                bookmark.isFavorite ? 'bg-[#111111] border-[#111111]' : 'bg-[#FFFFFF] border-[#111111]'
+                bookmark.isFavorite ? 'bg-[#111111] border-[#111111]' : 'bg-[#FEFFFC] border-[#111111]'
               }`}
               title={bookmark.isFavorite ? 'Starred' : 'Star Entry'}
             >
-              <Star className={`w-5 h-5 ${bookmark.isFavorite ? 'fill-[#FFFFFF] text-[#FFFFFF]' : 'text-[#111111]'}`} />
+              <Star className={`w-5 h-5 ${bookmark.isFavorite ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#111111]'}`} />
             </button>
 
             <button
               onClick={handleCopy}
-              className="p-3 btn-brutal-stealth border-[3px] border-[#111111] bg-[#FFFFFF] shadow-[4px_4px_0px_#111111]"
+              className="p-3 btn-brutal-stealth border-[3px] border-[#111111] bg-[#FEFFFC] shadow-[4px_4px_0px_#111111]"
               title="Copy URL"
             >
               {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
@@ -205,7 +205,7 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
             href={bookmark.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex justify-center items-center gap-2 px-6 py-3 btn-brutal-primary text-sm shadow-[6px_6px_0px_#88C425]"
+            className="flex-1 flex justify-center items-center gap-2 px-6 py-3 btn-brutal-primary text-sm shadow-[6px_6px_0px_#8116E0]"
           >
             <span>VISIT WEBSITE</span>
             <ExternalLink className="w-5 h-5" />

@@ -23,7 +23,7 @@ export const ExportConfirmModal: React.FC<ExportConfirmModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b-[4px] border-[#111111]">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#111111] border-[2px] border-[#111111] flex items-center justify-center text-[#FFFFFF] shadow-[4px_4px_0px_#88C425]">
+            <div className="w-12 h-12 bg-[#111111] border-[2px] border-[#111111] flex items-center justify-center text-[#FEFFFC] shadow-[4px_4px_0px_#8116E0]">
               <Download className="w-6 h-6" />
             </div>
             <div>
@@ -32,16 +32,16 @@ export const ExportConfirmModal: React.FC<ExportConfirmModalProps> = ({
             </div>
           </div>
 
-          <button onClick={onClose} className="p-2 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none">
+          <button onClick={onClose} className="p-2 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none">
             <X className="w-5 h-5 text-[#111111]" />
           </button>
         </div>
 
         {/* Details Box */}
-        <div className="p-4 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425] mb-8 space-y-3">
+        <div className="p-4 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#8116E0] mb-8 space-y-3">
           <div className="flex items-center gap-2 text-[#111111] text-xs font-black uppercase tracking-widest">
             <FileJson className="w-4 h-4" />
-            <span>Target File: <code className="bg-[#111111] text-[#FFFFFF] px-2 py-1 font-mono ml-1">STASH_AF_BACKUP.JSON</code></span>
+            <span>Target File: <code className="bg-[#111111] text-[#FEFFFC] px-2 py-1 font-mono ml-1">STASH_AF_BACKUP.JSON</code></span>
           </div>
           <p className="text-[14px] text-[#111111] font-black uppercase">
             Exporting {count} {count === 1 ? 'entry' : 'entries'}
@@ -55,7 +55,7 @@ export const ExportConfirmModal: React.FC<ExportConfirmModalProps> = ({
         <div className="flex items-center justify-end gap-4 pt-2 border-t-[4px] border-[#111111] mt-2">
           <button
             onClick={onClose}
-            className="px-6 py-3 btn-brutal-stealth bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111]"
+            className="px-6 py-3 btn-brutal-stealth bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111]"
           >
             CANCEL
           </button>
@@ -65,9 +65,9 @@ export const ExportConfirmModal: React.FC<ExportConfirmModalProps> = ({
               onConfirm();
               onClose();
             }}
-            className="flex items-center gap-2 px-6 py-3 btn-brutal-primary shadow-[6px_6px_0px_#88C425]"
+            className="flex items-center gap-2 px-6 py-3 btn-brutal-primary shadow-[6px_6px_0px_#8116E0]"
           >
-            <Check className="w-5 h-5 text-[#FFFFFF]" />
+            <Check className="w-5 h-5 text-[#FEFFFC]" />
             <span>CONFIRM EXPORT</span>
           </button>
         </div>

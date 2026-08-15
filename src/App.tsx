@@ -230,7 +230,7 @@ export const App: React.FC = () => {
         ) : (
           /* Empty State */
           <div className="brutal-panel p-16 text-center max-w-lg mx-auto my-20 space-y-6">
-            <div className="w-14 h-14 bg-[#111111] border-[3px] border-[#111111] flex items-center justify-center text-[#EAFDE6] mx-auto shadow-[4px_4px_0px_#88C425]">
+            <div className="w-14 h-14 bg-[#111111] border-[3px] border-[#111111] flex items-center justify-center text-[#FEFFFC] mx-auto shadow-[4px_4px_0px_#8116E0]">
               <Layers className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold uppercase tracking-tight text-[#111111]">No entries found</h3>
@@ -276,8 +276,8 @@ export const App: React.FC = () => {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 brutal-panel bg-[#111111] text-[#EAFDE6] text-xs font-bold uppercase animate-fade-in">
-          <CheckCircle2 className="w-4 h-4 text-[#EAFDE6]" />
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 brutal-panel bg-[#111111] text-[#FEFFFC] text-xs font-bold uppercase animate-fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#FEFFFC]" />
           <span>{toastMessage}</span>
         </div>
       )}

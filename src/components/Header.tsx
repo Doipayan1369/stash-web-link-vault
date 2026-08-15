@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   const favoriteCount = bookmarks.filter((b) => b.isFavorite).length;
 
   return (
-    <header className="sticky top-0 z-30 w-full px-6 lg:px-8 py-6 lg:py-8 bg-[#EAFDE6] border-b-[3px] border-[#111111] z-40">
+    <header className="sticky top-0 z-30 w-full px-6 lg:px-8 py-6 lg:py-8 bg-[#FEFFFC] border-b-[3px] border-[#111111] z-40">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Brand & Dynamic Title */}
@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <h1 className="text-3xl font-extrabold tracking-tighter text-[#111111] font-mono uppercase">
                   STASH.AF
                 </h1>
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 bg-[#111111] text-[#EAFDE6] shadow-[2px_2px_0px_#519548]">
+                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 bg-[#111111] text-[#FEFFFC] shadow-[2px_2px_0px_#8116E0]">
                   WABI-SABI
                 </span>
               </div>
@@ -82,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({
           </label>
 
           {/* Favorites Starred Counter Pill */}
-          <div className="flex items-center gap-1.5 px-4 py-2 bg-[#FFFFFF] border-[3px] border-[#111111] text-[#111111] text-xs font-black uppercase whitespace-nowrap shadow-[4px_4px_0px_#111111]">
+          <div className="flex items-center gap-1.5 px-4 py-2 bg-[#FEFFFC] border-[3px] border-[#111111] text-[#111111] text-xs font-black uppercase whitespace-nowrap shadow-[4px_4px_0px_#111111]">
             <Star className="w-4 h-4 fill-[#111111] text-[#111111]" />
             <span>{favoriteCount} Starred</span>
           </div>

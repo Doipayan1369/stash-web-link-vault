@@ -117,7 +117,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
       particleCount: 80,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#111111', '#EAFDE6', '#519548']
+      colors: ['#111111', '#FEFFFC', '#8116E0']
     });
 
     setUrl('');
@@ -130,7 +130,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
     onClose();
   };
 
-  const inputClass = "w-full px-4 py-3 bg-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#88C425] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] focus:shadow-[4px_4px_0px_#111111] rounded-none";
+  const inputClass = "w-full px-4 py-3 bg-[#FEFFFC] border-[3px] border-[#111111] focus:bg-[#8116E0] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#8116E0] focus:shadow-[4px_4px_0px_#111111] rounded-none";
   const labelClass = "block text-[11px] font-black text-[#111111] uppercase tracking-[0.1em] mb-2";
 
   return (
@@ -140,8 +140,8 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b-[4px] border-[#111111]">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#111111] text-[#FFFFFF] flex items-center justify-center shadow-[4px_4px_0px_#88C425] border-[2px] border-[#111111]">
-              <Sparkles className="w-6 h-6 text-[#FFFFFF]" />
+            <div className="w-12 h-12 bg-[#111111] text-[#FEFFFC] flex items-center justify-center shadow-[4px_4px_0px_#8116E0] border-[2px] border-[#111111]">
+              <Sparkles className="w-6 h-6 text-[#FEFFFC]" />
             </div>
             <div>
               <h2 className="text-2xl font-black text-[#111111] uppercase tracking-tighter">ADD ENTRY</h2>
@@ -149,7 +149,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
             </div>
           </div>
 
-          <button onClick={onClose} className="p-2 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none">
+          <button onClick={onClose} className="p-2 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none">
             <X className="w-5 h-5 text-[#111111]" />
           </button>
         </div>
@@ -209,7 +209,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
           </div>
 
           {/* Creator Attribution (Name & Link) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#8116E0]">
             <div>
               <label className="block text-[11px] font-black text-[#111111] uppercase tracking-[0.1em] mb-2 flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5 text-[#111111]" />
@@ -220,7 +220,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                 value={creatorName}
                 onChange={(e) => setCreatorName(e.target.value)}
                 placeholder="@HANDLE"
-                className="w-full px-3 py-2 bg-[#EAFDE6] border-[2px] border-[#111111] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none focus:bg-[#FFFFFF]"
+                className="w-full px-3 py-2 bg-[#FEFFFC] border-[2px] border-[#111111] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none focus:bg-[#FEFFFC]"
               />
             </div>
 
@@ -234,7 +234,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                 value={creatorLink}
                 onChange={(e) => setCreatorLink(e.target.value)}
                 placeholder="HTTPS://..."
-                className="w-full px-3 py-2 bg-[#EAFDE6] border-[2px] border-[#111111] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none focus:bg-[#FFFFFF]"
+                className="w-full px-3 py-2 bg-[#FEFFFC] border-[2px] border-[#111111] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none focus:bg-[#FEFFFC]"
               />
             </div>
           </div>
@@ -254,8 +254,8 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                     onClick={() => setSourceType(type)}
                     className={`flex items-center gap-2 px-3 py-2 border-[3px] border-[#111111] text-[10px] font-black uppercase transition-none ${
                       isSelected
-                        ? 'bg-[#111111] text-[#FFFFFF] shadow-[2px_2px_0px_#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
-                        : 'bg-[#FFFFFF] text-[#111111] shadow-[2px_2px_0px_#88C425] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
+                        ? 'bg-[#111111] text-[#FEFFFC] shadow-[2px_2px_0px_#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
+                        : 'bg-[#FEFFFC] text-[#111111] shadow-[2px_2px_0px_#8116E0] hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -282,7 +282,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-[11px] font-black text-[#FFFFFF] uppercase tracking-[0.1em] mb-2 bg-[#111111] inline-block px-2 py-0.5 border-[2px] border-[#111111]">
+              <label className="block text-[11px] font-black text-[#FEFFFC] uppercase tracking-[0.1em] mb-2 bg-[#111111] inline-block px-2 py-0.5 border-[2px] border-[#111111]">
                 WORKFLOW NOTE
               </label>
               <textarea
@@ -290,7 +290,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="HOW WILL YOU USE THIS?"
-                className="w-full px-4 py-3 bg-[#111111] text-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#222222] placeholder-[#FFFFFF]/40 font-bold font-mono text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] rounded-none resize-none"
+                className="w-full px-4 py-3 bg-[#111111] text-[#FEFFFC] border-[3px] border-[#111111] focus:bg-[#222222] placeholder-[#FEFFFC]/40 font-bold font-mono text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#8116E0] rounded-none resize-none"
               />
             </div>
           </div>
@@ -314,7 +314,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
               <label className={labelClass}>
                 VIBE RATING
               </label>
-              <div className="flex items-center gap-2 py-1 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425] px-4 justify-between h-[46px]">
+              <div className="flex items-center gap-2 py-1 bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#8116E0] px-4 justify-between h-[46px]">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
                     key={star}
@@ -324,7 +324,7 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                   >
                     <Flame
                       className={`w-6 h-6 ${
-                        star <= rating ? 'fill-[#111111] text-[#111111]' : 'text-[#88C425]'
+                        star <= rating ? 'fill-[#111111] text-[#111111]' : 'text-[#8116E0]'
                       }`}
                     />
                   </button>
@@ -338,16 +338,16 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-3 btn-brutal-stealth bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111]"
+              className="px-6 py-3 btn-brutal-stealth bg-[#FEFFFC] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111]"
             >
               CANCEL
             </button>
 
             <button
               type="submit"
-              className="flex items-center gap-2 px-8 py-3 btn-brutal-primary shadow-[6px_6px_0px_#88C425]"
+              className="flex items-center gap-2 px-8 py-3 btn-brutal-primary shadow-[6px_6px_0px_#8116E0]"
             >
-              <Sparkles className="w-5 h-5 text-[#FFFFFF]" />
+              <Sparkles className="w-5 h-5 text-[#FEFFFC]" />
               <span>SAVE ENTRY</span>
             </button>
           </div>
