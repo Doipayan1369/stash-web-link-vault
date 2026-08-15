@@ -18,12 +18,12 @@
 
 /* Premium 3D Panels (Glassmorphism) */
 .brutal-panel {
-  background: rgba(17, 17, 17, 0.6);
+  background: rgba(30, 30, 30, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   color: #FEFFFC;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -31,12 +31,12 @@
 
 .brutal-card {
   position: relative;
-  background: rgba(17, 17, 17, 0.6);
+  background: rgba(30, 30, 30, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   color: #FEFFFC;
   transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
