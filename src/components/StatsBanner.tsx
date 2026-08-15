@@ -55,9 +55,9 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
   filteredCount,
 }) => {
   return (
-    <div className="space-y-4 mb-6 mt-4">
+    <div className="space-y-6 mb-12 mt-6">
       {/* Search Bar + Controls Header */}
-      <div className="brutal-panel p-3.5 sm:p-4.5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="brutal-panel p-5 sm:p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Search Input */}
         <div className="relative w-full md:w-[400px]">
@@ -67,7 +67,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="SEARCH ENTRIES..."
-            className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#88C425] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] focus:shadow-[4px_4px_0px_#111111]"
+            className="w-full pl-12 pr-4 py-3.5 bg-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#88C425] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] focus:shadow-[4px_4px_0px_#111111]"
           />
           {filter.search && (
             <button
@@ -159,7 +159,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
       </div>
 
       {/* Source Origin Filters */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-2 scrollbar-none">
+      <div className="flex items-center gap-3 overflow-x-auto pb-4 pt-2 scrollbar-none">
         {SOURCES.map(({ type, label, icon: Icon }) => {
           const isActive = filter.source === type;
           return (
@@ -180,8 +180,8 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
       </div>
 
       {/* Category Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-2 shrink-0 bg-[#FFFFFF] px-2 py-1 border-[2px] border-[#111111]">CATEGORY</span>
+      <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-none">
+        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-3 shrink-0 bg-[#FFFFFF] px-3 py-1.5 border-[2px] border-[#111111]">CATEGORY</span>
         {CATEGORIES.map((cat) => {
           const isActive = filter.category === cat;
           return (

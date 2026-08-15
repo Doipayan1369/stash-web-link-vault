@@ -77,9 +77,9 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
     return (
       <div 
         onClick={() => onSelect(bookmark)}
-        className="brutal-card p-3 flex items-center justify-between gap-3 group cursor-pointer"
+        className="brutal-card p-4 sm:p-5 flex items-center justify-between gap-4 group cursor-pointer"
       >
-        <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center gap-4 min-w-0">
           <div className="w-10 h-10 bg-[#FFFFFF] border-[2px] border-[#111111] shadow-[2px_2px_0px_#111111] flex items-center justify-center shrink-0 p-1">
             {!imgError && bookmark.faviconUrl ? (
               <img
@@ -139,12 +139,12 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
   return (
     <div 
       onClick={() => onSelect(bookmark)}
-      className="brutal-card p-4 flex flex-col justify-between h-full group cursor-pointer"
+      className="brutal-card p-5 sm:p-6 flex flex-col justify-between h-full group cursor-pointer"
     >
       <div>
         {/* Top Header */}
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <div className="flex items-center gap-2.5 min-w-0">
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3.5 min-w-0">
             <div className="w-12 h-12 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] flex items-center justify-center p-2 shrink-0">
               {!imgError && bookmark.faviconUrl ? (
                 <img
@@ -189,7 +189,7 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
         </div>
 
         {/* Source Badge & Title */}
-        <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex items-center gap-2 mb-3">
           {getSourceBadge(bookmark.sourceType)}
           {bookmark.creatorName && (
             <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#111111]/70 uppercase truncate">
@@ -199,17 +199,17 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
           )}
         </div>
 
-        <h3 className="text-[14px] font-black uppercase text-[#111111] group-hover:underline leading-snug line-clamp-2 mb-2">
+        <h3 className="text-[15px] sm:text-[16px] font-black uppercase text-[#111111] group-hover:underline leading-snug line-clamp-2 mb-3">
           {bookmark.title}
         </h3>
 
         {/* Short Note / Description */}
-        <p className="text-[12px] text-[#111111]/80 font-mono line-clamp-2 leading-relaxed mb-3">
+        <p className="text-[13px] text-[#111111]/80 font-mono line-clamp-2 leading-relaxed mb-5">
           {bookmark.notes || bookmark.description}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {bookmark.tags.slice(0, 3).map((tag, idx) => (
             <span
               key={idx}
@@ -222,8 +222,8 @@ export const BookmarkCard: React.FC<BookmarkCardProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="pt-3 border-t-[3px] border-[#111111] flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1 bg-[#111111] text-[#FFFFFF] px-2 py-1 shadow-[2px_2px_0px_#88C425]">
+      <div className="pt-4 border-t-[3px] border-[#111111] flex items-center justify-between gap-3">
+        <div className="flex items-center gap-1.5 bg-[#111111] text-[#FFFFFF] px-3 py-1.5 shadow-[2px_2px_0px_#88C425]">
           <Flame className="w-3 h-3 fill-[#FFFFFF] text-[#FFFFFF]" />
           <span className="text-[10px] font-black uppercase">{bookmark.rating}.0</span>
         </div>

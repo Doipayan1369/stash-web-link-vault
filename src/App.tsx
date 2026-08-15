@@ -192,7 +192,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 pt-6">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-12 md:pt-16">
         
         {/* Controls & Filter Banner */}
         <StatsBanner
@@ -209,10 +209,10 @@ export const App: React.FC = () => {
           <div
             className={
               viewMode === 'compact'
-                ? 'space-y-2.5'
+                ? 'space-y-4'
                 : viewMode === 'bento'
-                ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]'
-                : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'
+                ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 auto-rows-[280px]'
+                : 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8'
             }
           >
             {filteredBookmarks.map((bookmark) => (
@@ -229,7 +229,7 @@ export const App: React.FC = () => {
           </div>
         ) : (
           /* Empty State */
-          <div className="brutal-panel p-10 text-center max-w-md mx-auto my-12 space-y-4">
+          <div className="brutal-panel p-16 text-center max-w-lg mx-auto my-20 space-y-6">
             <div className="w-14 h-14 bg-[#111111] border-[3px] border-[#111111] flex items-center justify-center text-[#EAFDE6] mx-auto shadow-[4px_4px_0px_#88C425]">
               <Layers className="w-7 h-7" />
             </div>
