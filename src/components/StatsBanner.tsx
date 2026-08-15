@@ -55,124 +55,124 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
   filteredCount,
 }) => {
   return (
-    <div className="space-y-4 mb-6">
+    <div className="space-y-4 mb-6 mt-4">
       {/* Search Bar + Controls Header */}
-      <div className="glass-panel rounded-[24px] p-3.5 sm:p-4.5 flex flex-col md:flex-row items-center justify-between gap-3 shadow-sm border border-black/8">
+      <div className="brutal-panel p-3.5 sm:p-4.5 flex flex-col md:flex-row items-center justify-between gap-4">
         
         {/* Search Input */}
-        <div className="relative w-full md:w-96">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        <div className="relative w-full md:w-[400px]">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111] font-bold" />
           <input
             type="text"
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
-            placeholder="Search entries, creators, notes, tags..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-100/70 border border-black/5 focus:border-blue-600 focus:bg-white text-slate-900 placeholder-slate-400 text-xs focus:outline-none transition-all shadow-inner"
+            placeholder="SEARCH ENTRIES..."
+            className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#88C425] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] focus:shadow-[4px_4px_0px_#111111]"
           />
           {filter.search && (
             <button
               onClick={() => onFilterChange({ search: '' })}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-500 hover:text-black bg-slate-200 px-2 py-0.5 rounded-lg"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#111111] text-[#FFFFFF] px-2 py-1 shadow-[2px_2px_0px_#88C425] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
-              Clear
+              CLEAR
             </button>
           )}
         </div>
 
         {/* View Switcher & Sorting Selector */}
-        <div className="flex items-center gap-2.5 w-full md:w-auto justify-between md:justify-end">
+        <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-between md:justify-end">
           
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-1.5 bg-slate-100/80 border border-black/5 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-700">
-            <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
+          <div className="flex items-center gap-1.5 bg-[#FFFFFF] border-[3px] border-[#111111] px-3 py-2 text-xs font-bold uppercase text-[#111111] shadow-[4px_4px_0px_#88C425]">
+            <ArrowUpDown className="w-3.5 h-3.5 text-[#111111]" />
             <select
               value={filter.sortBy}
               onChange={(e) => onFilterChange({ sortBy: e.target.value as SortOption })}
-              className="bg-transparent text-slate-900 focus:outline-none cursor-pointer font-sans"
+              className="bg-transparent text-[#111111] focus:outline-none cursor-pointer font-mono font-bold uppercase appearance-none"
             >
               <option value="newest">Newest First</option>
-              <option value="rating">Highest Rating 🔥</option>
-              <option value="favorites">Starred First ⭐</option>
-              <option value="alphabetical">Alphabetical (A-Z)</option>
+              <option value="rating">Highest Rating</option>
+              <option value="favorites">Starred First</option>
+              <option value="alphabetical">Alphabetical</option>
             </select>
           </div>
 
           {/* View & Starred Toggles */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => onFilterChange({ favoritesOnly: !filter.favoritesOnly })}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase transition-none shadow-[4px_4px_0px_#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#88C425] ${
                 filter.favoritesOnly
-                  ? 'bg-amber-100 border-amber-300 text-amber-900 shadow-[inset_0_1px_0_rgba(255,255,255,1)]'
-                  : 'bg-slate-100/80 border-black/5 text-slate-600 hover:text-black hover:bg-white'
+                  ? 'bg-[#111111] text-[#FFFFFF]'
+                  : 'bg-[#FFFFFF] text-[#111111] hover:bg-[#88C425]'
               }`}
             >
-              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-amber-500 text-amber-500' : ''}`} />
+              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FFFFFF] text-[#FFFFFF]' : 'text-[#111111]'}`} />
               <span>Starred</span>
             </button>
 
-            <div className="flex items-center gap-1 bg-slate-100/80 border border-black/5 rounded-xl p-1">
+            <div className="flex items-center bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425]">
             <button
               onClick={() => onViewModeChange('grid')}
-              className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
+              className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
                 viewMode === 'grid'
-                  ? 'bg-white text-black shadow-xs border border-black/10'
-                  : 'text-slate-500 hover:text-black'
+                  ? 'bg-[#111111] text-[#FFFFFF]'
+                  : 'text-[#111111] hover:bg-[#88C425]'
               }`}
               title="Grid View"
             >
-              <Grid className="w-3.5 h-3.5" />
+              <Grid className="w-4 h-4" />
             </button>
-
+            <div className="w-[3px] self-stretch bg-[#111111]"></div>
             <button
               onClick={() => onViewModeChange('bento')}
-              className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
+              className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
                 viewMode === 'bento'
-                  ? 'bg-white text-black shadow-xs border border-black/10'
-                  : 'text-slate-500 hover:text-black'
+                  ? 'bg-[#111111] text-[#FFFFFF]'
+                  : 'text-[#111111] hover:bg-[#88C425]'
               }`}
               title="Bento View"
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
+              <LayoutGrid className="w-4 h-4" />
             </button>
-
+            <div className="w-[3px] self-stretch bg-[#111111]"></div>
             <button
               onClick={() => onViewModeChange('compact')}
-              className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
+              className={`p-2 text-xs font-bold flex items-center justify-center transition-none ${
                 viewMode === 'compact'
-                  ? 'bg-white text-black shadow-xs border border-black/10'
-                  : 'text-slate-500 hover:text-black'
+                  ? 'bg-[#111111] text-[#FFFFFF]'
+                  : 'text-[#111111] hover:bg-[#88C425]'
               }`}
               title="Compact View"
             >
-              <List className="w-3.5 h-3.5" />
+              <List className="w-4 h-4" />
             </button>
           </div>
           </div>
 
           {/* Stats Pill */}
-          <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100/80 border border-black/5 text-xs font-bold text-slate-700">
-            <Sparkles className="w-3.5 h-3.5 text-slate-500" />
-            <span>{filteredCount} / {totalCount} Sites</span>
+          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#FFFFFF] border-[3px] border-[#111111] text-xs font-black uppercase text-[#111111] shadow-[4px_4px_0px_#111111]">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{filteredCount} / {totalCount} SITES</span>
           </div>
         </div>
       </div>
 
       {/* Source Origin Filters */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-2 scrollbar-none">
         {SOURCES.map(({ type, label, icon: Icon }) => {
           const isActive = filter.source === type;
           return (
             <button
               key={type}
               onClick={() => onFilterChange({ source: type })}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+              className={`flex items-center gap-2 px-4 py-2 border-[3px] border-[#111111] text-xs font-bold uppercase whitespace-nowrap transition-none ${
                 isActive
-                  ? 'pill-active-apple font-bold'
-                  : 'bg-white/80 border-black/5 text-slate-600 hover:text-black hover:bg-white'
+                  ? 'brutal-active'
+                  : 'bg-[#FFFFFF] text-[#111111] shadow-[4px_4px_0px_#88C425] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#88C425]'
               }`}
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-4 h-4" />
               <span>{label}</span>
             </button>
           );
@@ -180,18 +180,18 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
       </div>
 
       {/* Category Tabs */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1 shrink-0">Category:</span>
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-2 shrink-0 bg-[#FFFFFF] px-2 py-1 border-[2px] border-[#111111]">CATEGORY</span>
         {CATEGORIES.map((cat) => {
           const isActive = filter.category === cat;
           return (
             <button
               key={cat}
               onClick={() => onFilterChange({ category: cat })}
-              className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+              className={`px-3 py-1.5 border-[2px] border-[#111111] text-xs font-bold uppercase whitespace-nowrap transition-none ${
                 isActive
-                  ? 'bg-slate-900 text-white shadow-xs font-semibold'
-                  : 'bg-slate-100/60 text-slate-600 hover:text-black hover:bg-slate-200/60 border border-black/5'
+                  ? 'bg-[#111111] text-[#FFFFFF] shadow-[2px_2px_0px_#88C425]'
+                  : 'bg-[#EAFDE6] text-[#111111] hover:bg-[#FFFFFF] hover:shadow-[2px_2px_0px_#111111]'
               }`}
             >
               {cat}

@@ -9,7 +9,7 @@ import { INITIAL_BOOKMARKS } from './data/initialBookmarks';
 import { Bookmark, FilterState, ViewMode } from './types';
 import { Plus, Layers, CheckCircle2 } from 'lucide-react';
 
-const STORAGE_KEY = 'STASH_AF_BOOKMARKS_V1';
+const STORAGE_KEY = 'STASH_AF_BOOKMARKS_V2';
 
 export const App: React.FC = () => {
   // Load bookmarks from LocalStorage or seed data
@@ -181,7 +181,7 @@ export const App: React.FC = () => {
   }, [bookmarks, filter]);
 
   return (
-    <div className="relative min-h-screen pb-20 bg-[#FBFBFD]">
+    <div className="relative min-h-screen pb-20 bg-transparent">
       
       {/* Main Header Nav */}
       <Header
@@ -229,19 +229,19 @@ export const App: React.FC = () => {
           </div>
         ) : (
           /* Empty State */
-          <div className="glass-panel rounded-[32px] p-10 text-center max-w-md mx-auto my-12 space-y-4 border border-black/10">
-            <div className="w-14 h-14 rounded-3xl bg-slate-100 border border-black/10 flex items-center justify-center text-slate-700 mx-auto">
+          <div className="brutal-panel p-10 text-center max-w-md mx-auto my-12 space-y-4">
+            <div className="w-14 h-14 bg-[#111111] border-[3px] border-[#111111] flex items-center justify-center text-[#EAFDE6] mx-auto shadow-[4px_4px_0px_#88C425]">
               <Layers className="w-7 h-7" />
             </div>
-            <h3 className="text-lg font-bold text-[#1D1D1F]">No entries found</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-xl font-bold uppercase tracking-tight text-[#111111]">No entries found</h3>
+            <p className="text-sm text-[#111111]/70 font-mono">
               {filter.search
                 ? `No entry matches "${filter.search}". Try clearing search.`
                 : 'Your stash is empty for this filter. Add your first website link!'}
             </p>
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl btn-primary text-xs shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 btn-brutal-primary text-xs shadow-md mt-4"
             >
               <Plus className="w-4 h-4" />
               <span>Add Entry Now</span>
@@ -276,8 +276,8 @@ export const App: React.FC = () => {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#1D1D1F] text-white text-xs font-semibold shadow-2xl backdrop-blur-xl animate-fade-in border border-black/20">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 brutal-panel bg-[#111111] text-[#EAFDE6] text-xs font-bold uppercase animate-fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#EAFDE6]" />
           <span>{toastMessage}</span>
         </div>
       )}

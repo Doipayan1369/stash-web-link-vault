@@ -3,148 +3,146 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --glass-border: rgba(0, 0, 0, 0.08);
-    --glass-border-hover: rgba(0, 0, 0, 0.16);
-    --glass-bg: rgba(255, 255, 255, 0.85);
-  }
-
   body {
-    background-color: #F5F5F7;
-    background-image: 
-      radial-gradient(circle at top left, rgba(0, 113, 227, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.06) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(134, 134, 139, 0.03) 0%, transparent 60%);
+    background-color: #1B676B;
+    /* Base64 Noise Texture for the gritty feel */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     background-attachment: fixed;
-    color: #1D1D1F;
+    color: #EAFDE6;
+    font-family: 'JetBrains Mono', monospace;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.02em;
   }
 }
 
-/* Apple Light Frosted Glass Panels */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04),
-              inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+/* Wabi-Sabi Brutalist Panels */
+.brutal-panel {
+  background: #EAFDE6;
+  border: 3px solid #111111;
+  box-shadow: 6px 6px 0px #111111;
+  border-radius: 0;
+  color: #111111;
 }
 
-.glass-card {
+.brutal-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.04),
-              inset 0 1px 0 0 rgba(255, 255, 255, 1);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow, background;
+  background: #EAFDE6;
+  border: 3px solid #111111;
+  box-shadow: 6px 6px 0px #111111;
+  border-radius: 0;
+  color: #111111;
+  transition: all 0.15s ease-out;
+  will-change: transform, box-shadow;
 }
 
-.glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.08),
-              0 0 2px 0 rgba(0, 0, 0, 0.05),
-              inset 0 1px 0 0 rgba(255, 255, 255, 1);
+.brutal-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #111111;
 }
 
-.glass-card:active {
-  transform: translateY(-1px) scale(0.988);
-  transition-duration: 0.08s;
+.brutal-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px #111111;
+  transition-duration: 0.05s;
 }
 
-/* Premium Apple Light Button Interactions */
-.btn-stealth {
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #1D1D1F;
-  font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, background, border-color;
-}
-
-.btn-stealth:hover {
-  background: rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.16);
-  color: #000000;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.btn-stealth:active {
-  transform: scale(0.96);
-  background: rgba(0, 0, 0, 0.12);
-}
-
-/* Primary Action Button (Apple Obsidian Dark Pill) */
-.btn-primary {
-  background: linear-gradient(180deg, #2D2D2F 0%, #1D1D1F 100%);
-  color: #FFFFFF;
+/* Brutalist Buttons */
+.btn-brutal-stealth {
+  background: transparent;
+  border: 2px solid transparent;
+  color: #111111;
   font-weight: 700;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  transition: all 0.1s ease;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(180deg, #3D3D40 0%, #2D2D2F 100%);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+.btn-brutal-stealth:hover {
+  background: #BEF202;
+  border: 2px solid #111111;
+  box-shadow: 3px 3px 0px #111111;
+  transform: translate(-1px, -1px);
 }
 
-.btn-primary:active {
-  transform: scale(0.96);
-  background: #1D1D1F;
+.btn-brutal-stealth:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #111111;
 }
 
-/* Secondary Blue Action Button (Apple System Blue) */
-.btn-blue {
-  background: linear-gradient(180deg, #1480F2 0%, #0071E3 100%);
-  color: #FFFFFF;
-  font-weight: 600;
-  border: 1px solid #0060C0;
-  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Primary Action Button (Solid Black Block) */
+.btn-brutal-primary {
+  background: #BEF202;
+  color: #111111;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 3px solid #111111;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px #111111;
+  transition: all 0.15s ease;
 }
 
-.btn-blue:hover {
-  background: linear-gradient(180deg, #2990FF 0%, #0077ED 100%);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+.btn-brutal-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #519548;
+  background: #88C425;
 }
 
-.btn-blue:active {
-  transform: scale(0.96);
+.btn-brutal-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #519548;
+  background: #88C425;
 }
 
-/* Active Filter Pill */
-.pill-active-apple {
-  background: #1D1D1F;
-  color: #FFFFFF;
-  border-color: #1D1D1F;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+/* Secondary Action Button (Outline) */
+.btn-brutal-outline {
+  background: #EAFDE6;
+  color: #111111;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 3px solid #111111;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px #111111;
+  transition: all 0.15s ease;
 }
 
-/* Custom Minimal Light Scrollbar */
+.btn-brutal-outline:hover {
+  background: #BEF202;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.btn-brutal-outline:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #111111;
+}
+
+/* Active Filter Tag */
+.brutal-active {
+  background: #111111;
+  color: #BEF202;
+  border-color: #111111;
+  box-shadow: 4px 4px 0px #88C425;
+}
+
+/* Hard Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 12px;
+  height: 12px;
+  background: #EAFDE6;
+  border-left: 2px solid #111111;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(251, 251, 253, 0.9);
+  background: #EAFDE6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 9999px;
+  background: #111111;
+  border: 2px solid #EAFDE6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: #519548;
 }

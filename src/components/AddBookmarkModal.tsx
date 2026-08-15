@@ -20,7 +20,7 @@ const CATEGORIES: Category[] = [
 
 const SOURCES: { type: SourceType; label: string; icon: any }[] = [
   { type: 'reddit', label: 'Reddit', icon: MessageSquare },
-  { type: 'twitter', label: 'X / Twitter', icon: Share2 },
+  { type: 'twitter', label: 'Twitter', icon: Share2 },
   { type: 'google_news', label: 'Google News', icon: Newspaper },
   { type: 'workflow_tool', label: 'Workflow Tool', icon: Wrench },
   { type: 'design', label: 'Design & UX', icon: Palette },
@@ -114,9 +114,10 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
     });
 
     confetti({
-      particleCount: 50,
-      spread: 60,
+      particleCount: 80,
+      spread: 70,
       origin: { y: 0.6 },
+      colors: ['#111111', '#EAFDE6', '#519548']
     });
 
     setUrl('');
@@ -129,71 +130,74 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
     onClose();
   };
 
+  const inputClass = "w-full px-4 py-3 bg-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#88C425] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] focus:shadow-[4px_4px_0px_#111111] rounded-none";
+  const labelClass = "block text-[11px] font-black text-[#111111] uppercase tracking-[0.1em] mb-2";
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-2xl animate-fade-in">
-      <div className="relative w-full max-w-xl glass-panel rounded-[36px] p-6 sm:p-8 max-h-[90vh] overflow-y-auto scrollbar-none shadow-[0_24px_48px_-12px_rgba(0,0,0,0.18)] border border-white/60 animate-scale-up text-[#1D1D1F]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#111111]/80 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-xl brutal-panel p-6 sm:p-8 max-h-[90vh] overflow-y-auto scrollbar-none text-[#111111]">
         
         {/* Header */}
-        <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-black/10">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-black text-white flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b-[4px] border-[#111111]">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-[#111111] text-[#FFFFFF] flex items-center justify-center shadow-[4px_4px_0px_#88C425] border-[2px] border-[#111111]">
+              <Sparkles className="w-6 h-6 text-[#FFFFFF]" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-[#1D1D1F] tracking-tight">Add Website Entry</h2>
-              <p className="text-xs text-slate-500">Archive a tool, Reddit thread, or X post into your diary</p>
+              <h2 className="text-2xl font-black text-[#111111] uppercase tracking-tighter">ADD ENTRY</h2>
+              <p className="text-[11px] font-bold text-[#111111]/70 uppercase tracking-widest mt-1">Archive a new resource</p>
             </div>
           </div>
 
-          <button onClick={onClose} className="p-2 rounded-xl btn-stealth">
-            <X className="w-5 h-5" />
+          <button onClick={onClose} className="p-2 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[2px_2px_0px_#111111] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-none">
+            <X className="w-5 h-5 text-[#111111]" />
           </button>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+        <form onSubmit={handleSubmit} className="space-y-6 text-xs">
           {/* Website URL */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-              Website URL <span className="text-red-500">*</span>
+            <label className={labelClass}>
+              Website URL <span className="text-[#111111]">*</span>
             </label>
             <div className="relative">
-              <LinkIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <LinkIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111]" />
               <input
                 type="text"
                 required
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 onBlur={handleUrlBlur}
-                placeholder="https://reddit.com/r/vibe_coding or https://x.com/..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-black/10 focus:border-blue-600 focus:bg-white text-slate-900 placeholder-slate-400 text-xs focus:outline-none transition-all"
+                placeholder="https://..."
+                className={`${inputClass} pl-11`}
               />
             </div>
           </div>
 
           {/* Title & Category */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+              <label className={labelClass}>
                 Title / Platform Name
               </label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g. Vibe Coding Standard"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-black/10 focus:border-blue-600 focus:bg-white text-slate-900 placeholder-slate-400 text-xs focus:outline-none transition-all"
+                placeholder="E.G. PROJECT NAME"
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+              <label className={labelClass}>
                 Category
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value as Category)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-black/10 focus:border-blue-600 text-slate-900 text-xs focus:outline-none transition-all font-sans"
+                className={`${inputClass} appearance-none uppercase`}
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -205,39 +209,39 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
           </div>
 
           {/* Creator Attribution (Name & Link) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 rounded-2xl bg-slate-50 border border-black/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425]">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1 flex items-center gap-1">
-                <User className="w-3 h-3 text-slate-500" />
-                <span>Creator / Twitter Handle</span>
+              <label className="block text-[11px] font-black text-[#111111] uppercase tracking-[0.1em] mb-2 flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-[#111111]" />
+                <span>Creator Handle</span>
               </label>
               <input
                 type="text"
                 value={creatorName}
                 onChange={(e) => setCreatorName(e.target.value)}
-                placeholder="e.g. @johndoe or John Doe"
-                className="w-full px-3 py-2 rounded-xl bg-white border border-black/10 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:border-blue-600"
+                placeholder="@HANDLE"
+                className="w-full px-3 py-2 bg-[#EAFDE6] border-[2px] border-[#111111] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none focus:bg-[#FFFFFF]"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1 flex items-center gap-1">
-                <Share2 className="w-3 h-3 text-slate-500" />
-                <span>Post Link or Profile URL</span>
+              <label className="block text-[11px] font-black text-[#111111] uppercase tracking-[0.1em] mb-2 flex items-center gap-1.5">
+                <Share2 className="w-3.5 h-3.5 text-[#111111]" />
+                <span>Post URL</span>
               </label>
               <input
                 type="text"
                 value={creatorLink}
                 onChange={(e) => setCreatorLink(e.target.value)}
-                placeholder="https://x.com/post/123..."
-                className="w-full px-3 py-2 rounded-xl bg-white border border-black/10 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:border-blue-600"
+                placeholder="HTTPS://..."
+                className="w-full px-3 py-2 bg-[#EAFDE6] border-[2px] border-[#111111] text-[#111111] placeholder-[#111111]/40 font-bold font-mono text-xs focus:outline-none focus:bg-[#FFFFFF]"
               />
             </div>
           </div>
 
           {/* Source Type Selector Pills */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label className={labelClass}>
               Source Origin
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -248,13 +252,13 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                     key={type}
                     type="button"
                     onClick={() => setSourceType(type)}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-semibold transition-all ${
+                    className={`flex items-center gap-2 px-3 py-2 border-[3px] border-[#111111] text-[10px] font-black uppercase transition-none ${
                       isSelected
-                        ? 'bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-sm'
-                        : 'bg-slate-50 border-black/10 text-slate-600 hover:text-black hover:bg-slate-100'
+                        ? 'bg-[#111111] text-[#FFFFFF] shadow-[2px_2px_0px_#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
+                        : 'bg-[#FFFFFF] text-[#111111] shadow-[2px_2px_0px_#88C425] hover:bg-[#88C425] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none'
                     }`}
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-4 h-4" />
                     <span>{label}</span>
                   </button>
                 );
@@ -263,54 +267,54 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
           </div>
 
           {/* Description & Short Note */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+              <label className={labelClass}>
                 Description
               </label>
               <textarea
                 rows={2}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Brief summary..."
-                className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-black/10 focus:border-blue-600 text-slate-900 placeholder-slate-400 text-xs focus:outline-none resize-none"
+                placeholder="BRIEF SUMMARY..."
+                className={`${inputClass} resize-none`}
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-amber-700 uppercase tracking-wider mb-1.5">
-                Short Workflow Note (What it is used for)
+              <label className="block text-[11px] font-black text-[#FFFFFF] uppercase tracking-[0.1em] mb-2 bg-[#111111] inline-block px-2 py-0.5 border-[2px] border-[#111111]">
+                WORKFLOW NOTE
               </label>
               <textarea
                 rows={2}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                placeholder="e.g. Use for fast component specs during sprint planning..."
-                className="w-full px-3 py-2 rounded-xl bg-amber-50 border border-amber-200 focus:border-amber-400 text-amber-950 placeholder-amber-400 text-xs focus:outline-none resize-none"
+                placeholder="HOW WILL YOU USE THIS?"
+                className="w-full px-4 py-3 bg-[#111111] text-[#FFFFFF] border-[3px] border-[#111111] focus:bg-[#222222] placeholder-[#FFFFFF]/40 font-bold font-mono text-xs focus:outline-none transition-none shadow-[4px_4px_0px_#88C425] rounded-none resize-none"
               />
             </div>
           </div>
 
           {/* Tags & Rating */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+              <label className={labelClass}>
                 Tags (Comma separated)
               </label>
               <input
                 type="text"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
-                placeholder="AI, DevTool, Design"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-black/10 focus:border-blue-600 text-slate-900 text-xs focus:outline-none"
+                placeholder="DESIGN, TOOL, ..."
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                Vibe Rating (1 to 5 🔥)
+              <label className={labelClass}>
+                VIBE RATING
               </label>
-              <div className="flex items-center gap-2 py-1">
+              <div className="flex items-center gap-2 py-1 bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#88C425] px-4 justify-between h-[46px]">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
                     key={star}
@@ -319,8 +323,8 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
                     className="p-1 transition-transform hover:scale-125"
                   >
                     <Flame
-                      className={`w-5 h-5 ${
-                        star <= rating ? 'fill-amber-500 text-amber-500' : 'text-slate-300'
+                      className={`w-6 h-6 ${
+                        star <= rating ? 'fill-[#111111] text-[#111111]' : 'text-[#88C425]'
                       }`}
                     />
                   </button>
@@ -330,21 +334,21 @@ export const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
           </div>
 
           {/* Submit Action */}
-          <div className="pt-4 mt-2 border-t border-black/5 flex items-center justify-end gap-3">
+          <div className="pt-6 mt-4 border-t-[4px] border-[#111111] flex items-center justify-end gap-4">
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2.5 rounded-xl btn-stealth text-xs font-semibold"
+              className="px-6 py-3 btn-brutal-stealth bg-[#FFFFFF] border-[3px] border-[#111111] shadow-[4px_4px_0px_#111111]"
             >
-              Cancel
+              CANCEL
             </button>
 
             <button
               type="submit"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-primary text-xs font-bold shadow-lg"
+              className="flex items-center gap-2 px-8 py-3 btn-brutal-primary shadow-[6px_6px_0px_#88C425]"
             >
-              <Sparkles className="w-4 h-4 text-white" />
-              <span>Save Entry</span>
+              <Sparkles className="w-5 h-5 text-[#FFFFFF]" />
+              <span>SAVE ENTRY</span>
             </button>
           </div>
         </form>
