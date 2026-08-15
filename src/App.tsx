@@ -230,11 +230,11 @@ export const App: React.FC = () => {
         ) : (
           /* Empty State */
           <div className="brutal-panel p-16 text-center max-w-lg mx-auto my-20 space-y-6">
-            <div className="w-16 h-16 rounded-2xl bg-[#111111]/80 border border-white/10 flex items-center justify-center text-[#D0FF00] mx-auto shadow-[0_0_30px_rgba(208,255,0,0.2)]">
+            <div className="w-16 h-16 rounded-2xl bg-[#FEFFFC]/90 border border-[#111111]/10 flex items-center justify-center text-[#D0FF00] mx-auto shadow-[0_0_30px_rgba(208,255,0,0.2)]">
               <Layers className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold uppercase tracking-tight text-[#FEFFFC]">No entries found</h3>
-            <p className="text-sm font-mono text-[#FEFFFC]/70 max-w-sm mx-auto">
+            <h3 className="text-xl font-bold uppercase tracking-tight text-[#111111]">No entries found</h3>
+            <p className="text-sm font-mono text-[#111111]/70 max-w-sm mx-auto">
               {filter.search
                 ? `No entry matches "${filter.search}". Try clearing search.`
                 : 'Your stash is empty for this filter. Add your first website link!'}
@@ -276,8 +276,8 @@ export const App: React.FC = () => {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 brutal-panel bg-[#111111] text-[#FEFFFC] text-xs font-bold uppercase animate-fade-in">
-          <CheckCircle2 className="w-4 h-4 text-[#FEFFFC]" />
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 brutal-panel bg-[#111111] text-[#111111] text-xs font-bold uppercase animate-fade-in">
+          <CheckCircle2 className="w-4 h-4 text-[#111111]" />
           <span>{toastMessage}</span>
         </div>
       )}

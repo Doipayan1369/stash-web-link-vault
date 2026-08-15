@@ -61,18 +61,18 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
         
         {/* Search Input */}
         <div className="relative w-full md:w-[400px]">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FEFFFC] font-bold" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111] font-bold" />
           <input
             type="text"
             value={filter.search}
             onChange={(e) => onFilterChange({ search: e.target.value })}
             placeholder="SEARCH ENTRIES..."
-            className="w-full pl-12 pr-4 py-3.5 bg-[#111111]/60 backdrop-blur-md border border-white/10 focus:bg-[#8116E0] text-[#FEFFFC] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none  shadow-xl focus:shadow-xl"
+            className="w-full pl-12 pr-4 py-3.5 bg-[#FEFFFC]/95 backdrop-blur-md border border-[#111111]/10 focus:bg-[#8116E0] text-[#111111] placeholder-[#111111]/50 font-bold uppercase text-xs sm:text-sm focus:outline-none  shadow-xl focus:shadow-xl"
           />
           {filter.search && (
             <button
               onClick={() => onFilterChange({ search: '' })}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#FEFFFC]/10 text-[#FEFFFC] px-2 py-1 shadow-xl active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase bg-[#111111]/5 text-[#111111] px-2 py-1 shadow-xl active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
               CLEAR
             </button>
@@ -83,12 +83,12 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
         <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-between md:justify-end">
           
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-1.5 bg-[#111111]/60 backdrop-blur-md border border-white/10 px-3 py-2 text-xs font-bold uppercase text-[#FEFFFC] shadow-xl">
-            <ArrowUpDown className="w-3.5 h-3.5 text-[#FEFFFC]" />
+          <div className="flex items-center gap-1.5 bg-[#FEFFFC]/95 backdrop-blur-md border border-[#111111]/10 px-3 py-2 text-xs font-bold uppercase text-[#111111] shadow-xl">
+            <ArrowUpDown className="w-3.5 h-3.5 text-[#111111]" />
             <select
               value={filter.sortBy}
               onChange={(e) => onFilterChange({ sortBy: e.target.value as SortOption })}
-              className="bg-transparent text-[#FEFFFC] focus:outline-none cursor-pointer font-mono font-bold uppercase appearance-none"
+              className="bg-transparent text-[#111111] focus:outline-none cursor-pointer font-mono font-bold uppercase appearance-none"
             >
               <option value="newest">Newest First</option>
               <option value="rating">Highest Rating</option>
@@ -101,47 +101,47 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onFilterChange({ favoritesOnly: !filter.favoritesOnly })}
-              className={`flex items-center gap-1.5 px-3 py-2 border border-white/10 text-xs font-bold uppercase  shadow-xl active:translate-x-[2px] active:translate-y-[2px] active:shadow-xl ${
+              className={`flex items-center gap-1.5 px-3 py-2 border border-[#111111]/10 text-xs font-bold uppercase  shadow-xl active:translate-x-[2px] active:translate-y-[2px] active:shadow-xl ${
                 filter.favoritesOnly
-                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
-                  : 'bg-[#111111]/60 backdrop-blur-md text-[#FEFFFC] hover:bg-[#8116E0]'
+                  ? 'bg-[#111111]/5 text-[#111111]'
+                  : 'bg-[#FEFFFC]/95 backdrop-blur-md text-[#111111] hover:bg-[#8116E0]'
               }`}
             >
-              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FEFFFC] text-[#FEFFFC]' : 'text-[#FEFFFC]'}`} />
+              <Star className={`w-3.5 h-3.5 ${filter.favoritesOnly ? 'fill-[#FEFFFC] text-[#111111]' : 'text-[#111111]'}`} />
               <span>Starred</span>
             </button>
 
-            <div className="flex items-center bg-[#111111]/60 backdrop-blur-md border border-white/10 shadow-xl">
+            <div className="flex items-center bg-[#FEFFFC]/95 backdrop-blur-md border border-[#111111]/10 shadow-xl">
             <button
               onClick={() => onViewModeChange('grid')}
               className={`p-2 text-xs font-bold flex items-center justify-center  ${
                 viewMode === 'grid'
-                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
-                  : 'text-[#FEFFFC] hover:bg-[#8116E0]'
+                  ? 'bg-[#111111]/5 text-[#111111]'
+                  : 'text-[#111111] hover:bg-[#8116E0]'
               }`}
               title="Grid View"
             >
               <Grid className="w-4 h-4" />
             </button>
-            <div className="w-[3px] self-stretch bg-[#FEFFFC]/10"></div>
+            <div className="w-[3px] self-stretch bg-[#111111]/5"></div>
             <button
               onClick={() => onViewModeChange('bento')}
               className={`p-2 text-xs font-bold flex items-center justify-center  ${
                 viewMode === 'bento'
-                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
-                  : 'text-[#FEFFFC] hover:bg-[#8116E0]'
+                  ? 'bg-[#111111]/5 text-[#111111]'
+                  : 'text-[#111111] hover:bg-[#8116E0]'
               }`}
               title="Bento View"
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
-            <div className="w-[3px] self-stretch bg-[#FEFFFC]/10"></div>
+            <div className="w-[3px] self-stretch bg-[#111111]/5"></div>
             <button
               onClick={() => onViewModeChange('compact')}
               className={`p-2 text-xs font-bold flex items-center justify-center  ${
                 viewMode === 'compact'
-                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC]'
-                  : 'text-[#FEFFFC] hover:bg-[#8116E0]'
+                  ? 'bg-[#111111]/5 text-[#111111]'
+                  : 'text-[#111111] hover:bg-[#8116E0]'
               }`}
               title="Compact View"
             >
@@ -151,7 +151,7 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
           </div>
 
           {/* Stats Pill */}
-          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#111111]/60 backdrop-blur-md border border-white/10 text-xs font-black uppercase text-[#FEFFFC] shadow-xl">
+          <div className="hidden lg:flex items-center gap-1.5 px-3 py-2 bg-[#FEFFFC]/95 backdrop-blur-md border border-[#111111]/10 text-xs font-black uppercase text-[#111111] shadow-xl">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{filteredCount} / {totalCount} SITES</span>
           </div>
@@ -166,10 +166,10 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
             <button
               key={type}
               onClick={() => onFilterChange({ source: type })}
-              className={`flex items-center gap-2 px-4 py-2 border border-white/10 text-xs font-bold uppercase whitespace-nowrap  ${
+              className={`flex items-center gap-2 px-4 py-2 border border-[#111111]/10 text-xs font-bold uppercase whitespace-nowrap  ${
                 isActive
                   ? 'brutal-active'
-                  : 'bg-[#111111]/60 backdrop-blur-md text-[#FEFFFC] shadow-xl hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-xl'
+                  : 'bg-[#FEFFFC]/95 backdrop-blur-md text-[#111111] shadow-xl hover:bg-[#8116E0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-xl'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -181,17 +181,17 @@ export const StatsBanner: React.FC<StatsBannerProps> = ({
 
       {/* Category Tabs */}
       <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-none">
-        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#FEFFFC] mr-3 shrink-0 bg-[#111111]/60 backdrop-blur-md px-3 py-1.5 border border-white/10">CATEGORY</span>
+        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#111111] mr-3 shrink-0 bg-[#FEFFFC]/95 backdrop-blur-md px-3 py-1.5 border border-[#111111]/10">CATEGORY</span>
         {CATEGORIES.map((cat) => {
           const isActive = filter.category === cat;
           return (
             <button
               key={cat}
               onClick={() => onFilterChange({ category: cat })}
-              className={`px-3 py-1.5 border border-white/10 text-xs font-bold uppercase whitespace-nowrap  ${
+              className={`px-3 py-1.5 border border-[#111111]/10 text-xs font-bold uppercase whitespace-nowrap  ${
                 isActive
-                  ? 'bg-[#FEFFFC]/10 text-[#FEFFFC] shadow-xl'
-                  : 'bg-[#111111]/60 backdrop-blur-md text-[#FEFFFC] hover:bg-[#111111]/60 backdrop-blur-md hover:shadow-xl'
+                  ? 'bg-[#111111]/5 text-[#111111] shadow-xl'
+                  : 'bg-[#FEFFFC]/95 backdrop-blur-md text-[#111111] hover:bg-[#FEFFFC]/95 backdrop-blur-md hover:shadow-xl'
               }`}
             >
               {cat}

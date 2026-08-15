@@ -19,25 +19,25 @@ export const Header: React.FC<HeaderProps> = ({
   const favoriteCount = bookmarks.filter((b) => b.isFavorite).length;
 
   return (
-    <header className="sticky top-0 z-30 w-full px-6 lg:px-8 py-6 lg:py-8 bg-[#000000]/60 backdrop-blur-xl border-b border-white/10 shadow-lg z-40">
+    <header className="sticky top-0 z-30 w-full px-6 lg:px-8 py-6 lg:py-8 bg-[#FEFFFC]/90 backdrop-blur-xl border-b border-[#111111]/10 shadow-lg z-40">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Brand & Dynamic Title */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
           <div className="flex items-center gap-4 cursor-default group">
-            <div className="relative flex items-center justify-center w-14 h-14 bg-[#FEFFFC]/10 border border-white/10 shadow-xl overflow-hidden transition-all duration-75 group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] group-hover:shadow-xl">
+            <div className="relative flex items-center justify-center w-14 h-14 bg-[#111111]/5 border border-[#111111]/10 shadow-xl overflow-hidden transition-all duration-75 group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] group-hover:shadow-xl">
               <img src={logo} alt="Stash.af Vault Logo" className="w-full h-full object-cover grayscale opacity-90 mix-blend-luminosity hover:grayscale-0 hover:opacity-100 hover:mix-blend-normal transition-all duration-300" />
             </div>
             <div className="flex flex-col justify-center">
               <div className="flex items-center gap-2">
-                <h1 className="text-3xl font-extrabold tracking-tighter text-[#FEFFFC] font-mono uppercase">
+                <h1 className="text-3xl font-extrabold tracking-tighter text-[#111111] font-mono uppercase">
                   STASH.AF
                 </h1>
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 bg-[#FEFFFC]/10 text-[#FEFFFC] shadow-xl">
+                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 bg-[#111111]/5 text-[#111111] shadow-xl">
                   WABI-SABI
                 </span>
               </div>
-              <p className="text-[11px] text-[#FEFFFC] font-bold font-mono tracking-[0.2em] uppercase mt-1">
+              <p className="text-[11px] text-[#111111] font-bold font-mono tracking-[0.2em] uppercase mt-1">
                 Web Link Vault
               </p>
             </div>
@@ -82,8 +82,8 @@ export const Header: React.FC<HeaderProps> = ({
           </label>
 
           {/* Favorites Starred Counter Pill */}
-          <div className="flex items-center gap-1.5 px-4 py-2 bg-[#FEFFFC]/10/40 backdrop-blur-md border border-white/10 text-[#FEFFFC] text-xs font-black uppercase whitespace-nowrap shadow-xl">
-            <Star className="w-4 h-4 fill-[#111111] text-[#FEFFFC]" />
+          <div className="flex items-center gap-1.5 px-4 py-2 bg-[#111111]/5/40 backdrop-blur-md border border-[#111111]/10 text-[#111111] text-xs font-black uppercase whitespace-nowrap shadow-xl">
+            <Star className="w-4 h-4 fill-[#111111] text-[#111111]" />
             <span>{favoriteCount} Starred</span>
           </div>
         </div>
